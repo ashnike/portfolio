@@ -1,0 +1,217 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-window: #11111b;
+    --bg-header: #181825;
+    --bg-terminal: #1e1e2e;
+    --fg-text: #cdd6f4;
+    --accent-blue: #89b4fa;
+    --accent-green: #a6e3a1;
+    --accent-yellow: #f9e2af;
+    --accent-pink: #f5c2e7;
+    --accent-red: #f38ba8;
+    --accent-cyan: #94e2d5;
+    --border-color: #313244;
+}
+
+/* Themes */
+body.theme-matrix {
+    --bg-window: #030a05;
+    --bg-header: #07150c;
+    --bg-terminal: #020803;
+    --fg-text: #00ff66;
+    --accent-blue: #00dd88;
+    --accent-green: #55ff55;
+    --accent-yellow: #aaffaa;
+    --accent-pink: #00ffaa;
+    --accent-red: #ff3333;
+    --accent-cyan: #00ffcc;
+    --border-color: #0b3d1b;
+}
+
+body.theme-dracula {
+    --bg-window: #191a21;
+    --bg-header: #21222c;
+    --bg-terminal: #282a36;
+    --fg-text: #f8f8f2;
+    --accent-blue: #6272a4;
+    --accent-green: #50fa7b;
+    --accent-yellow: #f1fa8c;
+    --accent-pink: #ff79c6;
+    --accent-red: #ff5555;
+    --accent-cyan: #8be9fd;
+    --border-color: #44475a;
+}
+
+body {
+    background-color: var(--bg-window);
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    color: var(--fg-text);
+    transition: background-color 0.25s ease;
+}
+
+.terminal-window {
+    width: 100%;
+    max-width: 1100px;
+    height: 92vh;
+    background-color: var(--bg-terminal);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Header */
+.terminal-header {
+    height: 42px;
+    background-color: var(--bg-header);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    user-select: none;
+    font-size: 13px;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.btn-close { background-color: #ff5f56; }
+.btn-minimize { background-color: #ffbd2e; }
+.btn-maximize { background-color: #27c93f; }
+
+.terminal-title {
+    font-size: 13px;
+    color: var(--accent-blue);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.terminal-badges {
+    display: flex;
+    gap: 8px;
+}
+
+.badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+.k8s-badge {
+    color: var(--accent-green);
+}
+
+.git-badge {
+    color: var(--accent-yellow);
+}
+
+/* Terminal container */
+#terminal {
+    flex: 1;
+    width: 100%;
+    height: calc(100% - 70px);
+    background-color: var(--bg-terminal);
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Status bar */
+.terminal-statusbar {
+    height: 28px;
+    background-color: var(--bg-header);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    font-size: 12px;
+    color: #6c7086;
+}
+
+.terminal-statusbar .highlight {
+    color: var(--accent-cyan);
+}
+
+/* Override jQuery Terminal styling */
+.terminal {
+    --background: var(--bg-terminal) !important;
+    --color: var(--fg-text) !important;
+    font-family: 'Fira Code', 'Cascadia Code', monospace !important;
+}
+
+.terminal, .cmd, .terminal-scroller {
+    background-color: var(--bg-terminal) !important;
+}
+
+.cmd .prompt {
+    color: var(--accent-green) !important;
+    font-weight: 600;
+}
+
+/* Custom terminal text highlights */
+.devops-accent { color: var(--accent-blue); }
+.devops-green { color: var(--accent-green); }
+.devops-yellow { color: var(--accent-yellow); }
+.devops-pink { color: var(--accent-pink); }
+.devops-cyan { color: var(--accent-cyan); }
+.devops-red { color: var(--accent-red); }
+.devops-bold { font-weight: 700; }
+
+/* Scrollbar */
+.terminal-scroller::-webkit-scrollbar {
+    width: 8px;
+}
+.terminal-scroller::-webkit-scrollbar-track {
+    background: var(--bg-terminal);
+}
+.terminal-scroller::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+    .terminal-window {
+        height: 100vh;
+        border-radius: 0;
+        border: none;
+    }
+    .terminal-title {
+        font-size: 11px;
+    }
+    .terminal-badges {
+        display: none;
+    }
+    #terminal {
+        font-size: 12px;
+    }
+}
+    50% { opacity: 0; }
+}

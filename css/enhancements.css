@@ -1,0 +1,111 @@
+/* ====================================================== */
+/* ============= WINDOWS 8 START MENU MODE ============== */
+/* ====================================================== */
+
+/* Windows 8 Typography */
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap');
+
+/* Hide logon screens if present */
+.user-logon-screen,
+.logon-splash-screen {
+    display: none !important;
+}
+
+/* Ensure Start Menu is always fullscreen, active and visible */
+.start-menu {
+    display: block !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 10 !important;
+    font-family: 'Segoe UI', -apple-system, sans-serif !important;
+}
+
+/* Smooth Metro horizontal scrollbar */
+.start-menu .metro-ui::-webkit-scrollbar {
+    height: 8px;
+}
+
+.start-menu .metro-ui::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.start-menu .metro-ui::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.start-menu .metro-ui::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+/* Windows 8 Metro UI Tile Polish */
+.start-menu .metro-ui-grid li {
+    font-family: 'Segoe UI', -apple-system, sans-serif !important;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.start-menu .metro-ui-grid li:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
+}
+
+.start-menu .info h1 {
+    font-family: 'Segoe UI Light', 'Segoe UI', sans-serif !important;
+    font-weight: 300 !important;
+    letter-spacing: -0.5px;
+}
+
+/* About Me Tile Styling */
+.metro-ui-grid li.aboutme-tile {
+    position: relative !important;
+    width: 28vh !important;
+    height: 28vh !important;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+.metro-ui-grid li.aboutme-tile a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.metro-ui-grid li.aboutme-tile img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    z-index: 1 !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    border-radius: 0 !important;
+}
+
+.metro-ui-grid li.aboutme-tile .text {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    padding: 0.5vh 0.8vh !important;
+    font-size: 1.8vh !important;
+    font-weight: 600 !important;
+    z-index: 2 !important;
+    text-align: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+}

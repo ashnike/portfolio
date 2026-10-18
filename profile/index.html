@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PinakaOps // Cloud & DevOps Engineer Terminal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-catppuccin">
+    <div class="terminal-window">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <span class="btn-dot btn-close"></span>
+                <span class="btn-dot btn-minimize"></span>
+                <span class="btn-dot btn-maximize"></span>
+            </div>
+            <div class="terminal-title">ash@pinakaops: ~/cluster-infra (k8s-prod-us-east-1)</div>
+            <div class="terminal-badges">
+                <span class="badge k8s-badge">● K8s: healthy</span>
+                <span class="badge git-badge">main</span>
+            </div>
+        </div>
+        <div id="terminal"></div>
+        <div class="terminal-statusbar">
+            <span>Type <strong class="highlight">help</strong> to see available commands</span>
+            <span>Tab for autocomplete</span>
+            <span id="current-time"></span>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/autocomplete_menu.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
