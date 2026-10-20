@@ -115,10 +115,9 @@
         grid-auto-flow: column dense;
         gap: 8px / 768px * 100vh;
         align-content: start;
-        height: 520px / 768px * 100vh;
-        margin: 0;
+        height: 504px / 768px * 100vh;
+        margin: 0 3vh 0 0;
         padding: 0;
-        margin-right: 12px / 768px * 100vh;
         vertical-align: top;
         @include transform(translateX(100px / 768px * 100vh) scale(0.75));
         @include transition(all 600ms);
@@ -126,36 +125,29 @@
         li {
             position: relative;
             grid-column: span 2;
-            width: auto;
-            height: auto;
             list-style-type: none;
             margin: 0;
+            padding: 0;
             text-align: left;
             border: solid 1px / 768px * 100vh transparent;
             box-sizing: border-box;
-        }
-        
-        /* Specific tile sizing to prevent overlap */
-        li.aboutme-tile,
-        li.mail-tile {
-            grid-column: span 2 !important;
-            width: 28vh !important;
-            height: 28vh !important;
+            overflow: hidden;
         }
         
         li:hover {
-            border: solid 1px / 768px * 100vh #999;
+            border-color: #999;
         }
         
         li:active, li:focus {
-            border: solid 2px / 768px * 100vh #999;
+            border-width: 2px / 768px * 100vh;
+            border-color: #999;
         }
         
-        .small {
+        li.small {
             grid-column: span 1;
         }
         
-        .brand {
+        li.brand {
             grid-column: span 4;
         }
         
@@ -165,19 +157,11 @@
             color: inherit;
         }
         
-        .brand img {
-            position: absolute;
-            top: 8px / 768px * 100vh;
-            left: 8px / 768px * 100vh;
-            height: 80px / 768px * 100vh;
-            width: 80px / 768px * 100vh;
-            object-fit: cover;
-        }
-        
         .ionicons {
             position: absolute;
-            top: 6px / 768px * 100vh;
-            left: 10px / 768px * 100vh;
+            top: 10px / 768px * 100vh;
+            left: 50%;
+            transform: translateX(-50%);
             margin: 0;
             font-size: 500%;
             line-height: 1;
@@ -190,16 +174,30 @@
         }
     }
     
-    .grid-1, .grid-2, .grid-3 {
-        width: auto;
-    }
-    
-    .grid-2, .grid-3 {
-        margin-right: 40px / 768px * 100vh;
-    }
-    
     .activate-metro-ui-grid {
         opacity: 1;
         @include transform(translateX(0px) scale(1));
+    }
+
+    .desktop-activator {
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 52px / 768px * 100vh;
+        height: $taskbar-height;
+        text-align: center;
+        font-size: 28px / 768px * 100vh;
+        background-color: #212121;
+        @include transition(opacity 250ms);
+        z-index: 13;
+
+        .ion-social-windows {
+            color: $faded-bg-color;
+        }
+    }
+
+    .desktop-activator:hover {
+        opacity: 1;
     }
 }

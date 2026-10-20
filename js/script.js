@@ -20,16 +20,23 @@ $(document).ready(function() {
 
     function launchStartMenu() {
         $('.boot-screen').fadeOut('slow', function() {
+            $('.logon-splash-screen').fadeIn('fast');
             $('.start-menu').fadeIn('fast', function() {
                 $('.metro-ui-grid').addClass('activate-metro-ui-grid');
+            });
+            $(document).one('click keydown', function() {
+                $('.logon-splash-screen').addClass('dismissed');
             });
             try {
                 var audio = document.getElementById('windows-logon-audio');
                 if (audio) {
                     var playPromise = audio.play();
                     if (playPromise !== undefined) {
-                        playPromise.catch(function(error) {
-                            console.log('Audio autoplay prevented by browser policy');
+                        playPromise.catch(function() {
+                            // Autoplay blocked: play on first user interaction instead
+                            $(document).one('click keydown', function() {
+                                audio.play();
+                            });
                         });
                     }
                 }
@@ -90,7 +97,7 @@ $(document).ready(function() {
         $('.start-menu .user-menu-dropdown').removeClass('show-user-menu-dropdown');
     });
 
-    $('.charms-bar-activator-top, .charms-bar-activator-bottom').mouseenter(function() {
+    $('.charms-bar-activator-top, .charms-bar-activator-bottom, .charms-bar-activator-middle').mouseenter(function() {
         $('.charms-bar').show().delay(300).animate({right: '0px'}, 200);
     });
 
@@ -101,6 +108,10 @@ $(document).ready(function() {
 
     $('.charms-bar').mouseenter(function() { $('.charms-info').fadeIn('fast'); });
     $('.charms-bar .show-start-menu').click(function() { $('.app').fadeOut('fast'); $('.start-menu').fadeIn('fast'); });
+
+    $('.desktop-activator').click(function() {
+        $('.start-menu').fadeOut('slow');
+    });
 
     $('.metro-ui-grid li').click(function(e) {
         var $tile = $(this);
