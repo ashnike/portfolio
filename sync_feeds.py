@@ -144,9 +144,44 @@ def sync_blogs():
         print(f"Error fetching blogs: {e}")
     return None
 
+def sync_credly():
+    print("[3/3] Fetching Credly badges for ashnil-naik.b57d135a...")
+    url = "https://www.credly.com/users/ashnil-naik.b57d135a/badges.json"
+    req = urllib.request.Request(
+        url,
+        headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        badges = []
+        for item in data.get("data", []):
+            bt = item.get("badge_template", {})
+            issuer = bt.get("issuer", {}).get("summary", "")
+            badges.append({
+                "id": item.get("id"),
+                "name": bt.get("name"),
+                "issuer": issuer,
+                "date": item.get("issued_at_date"),
+                "image": bt.get("image_url"),
+                "url": bt.get("url"),
+                "verify_url": "https://www.credly.com/users/ashnil-naik.b57d135a/badges"
+            })
+        if badges:
+            os.makedirs(DATA_DIR, exist_ok=True)
+            out_file = os.path.join(DATA_DIR, "credly.json")
+            with open(out_file, "w", encoding="utf-8") as f:
+                json.dump(badges, f, indent=2, ensure_ascii=False)
+            print(f"Successfully saved {len(badges)} Credly badges to {out_file}")
+            return badges
+    except Exception as e:
+        print(f"Error fetching Credly badges: {e}")
+    return None
+
 
 if __name__ == "__main__":
     sync_youtube()
     sync_blogs()
+    sync_credly()
     print("\nSync completed!")
 

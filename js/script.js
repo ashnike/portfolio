@@ -113,36 +113,94 @@ $(document).ready(function() {
         $('.start-menu').fadeOut('slow');
     });
 
+    function openApp(appSelector) {
+        $('.app').removeClass('active').addClass('inactive').fadeOut(150);
+        var $app = $(appSelector);
+        if ($app.length) {
+            $app.removeClass('inactive').addClass('active').css({'z-index': 25}).fadeIn(200);
+        }
+    }
+
+    // Modal activator buttons (in tiles, headers, and modal dialogs)
+    $(document).on('click', '.open-booking, .open-booking-btn', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openApp('#booking-app');
+    });
+
+    $(document).on('click', '.open-services', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openApp('#services-app');
+    });
+
+    $(document).on('click', '.open-casestudies', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openApp('#casestudies-app');
+    });
+
+    $(document).on('click', '.open-credly', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openApp('#credly-app');
+    });
+
     $('.metro-ui-grid li').click(function(e) {
         var $tile = $(this);
 
-        // Check if dynamic live feed tile or external link tile
-        if ($tile.hasClass('live-feed-tile') || $tile.attr('data-url')) {
-            var url = $tile.attr('data-url') || $tile.find('a.tile-link').attr('href');
-            if (url) {
-                window.open(url, '_blank', 'noopener,noreferrer');
-                return;
-            }
+        // 1. Check for freelance modal actions first
+        if ($tile.hasClass('open-credly')) {
+            openApp('#credly-app');
+            return;
         }
 
+        if ($tile.hasClass('open-booking') || $tile.hasClass('booking-tile') || $tile.hasClass('resume-tile')) {
+            openApp('#booking-app');
+            return;
+        }
+
+        if ($tile.hasClass('open-casestudies') || $tile.hasClass('service-cases')) {
+            openApp('#casestudies-app');
+            return;
+        }
+
+        if ($tile.hasClass('open-services') || $tile.hasClass('service-k8s') || $tile.hasClass('service-cloud') ||
+            $tile.hasClass('service-iac') || $tile.hasClass('service-cicd') || $tile.hasClass('service-cost') ||
+            $tile.closest('.grid-services').length || $tile.hasClass('tech-tile') || $tile.closest('.grid-tech').length) {
+            openApp('#services-app');
+            return;
+        }
+
+        // 2. Check if dynamic live feed tile or external link tile with a valid destination
+        var rawUrl = $tile.attr('data-url') || $tile.find('a.tile-link').attr('href');
+        if (rawUrl && !rawUrl.startsWith('javascript:')) {
+            if (rawUrl.startsWith('mailto:')) {
+                window.location.href = rawUrl;
+            } else {
+                window.open(rawUrl, '_blank', 'noopener,noreferrer');
+            }
+            return;
+        }
+
+        // 3. Fallback tile text handlers
         var tileText = $tile.find('.text').text().trim().toLowerCase();
         console.log('Metro UI Grid Li Clicked - tileText:', tileText);
         
-        if (tileText === 'about me') {
+        if (tileText === 'about me' || $tile.hasClass('aboutme-tile')) {
             console.log('About Me tile clicked - redirecting to profile/');
             window.location.href = 'profile/';
         } else if (tileText === 'share') {
             console.log('Opening share app');
-            $('.app').removeClass('active').addClass('inactive');
-            $('#share').removeClass('inactive').addClass('active').fadeIn(200);
-        } else if (tileText === 'adobe brackets' || tileText === 'code' || tileText === 'front-end tools' || tileText === 'html5' || tileText === 'css3' || tileText === 'sass/scss' || tileText === 'normalize.css' || tileText === 'js/jquery/jquery ui' || tileText === 'ionicons') {
+            openApp('#share');
+        } else if (tileText === 'adobe brackets' || tileText === 'code' || tileText === 'front-end tools' || 
+                   tileText === 'html5' || tileText === 'css3' || tileText === 'sass/scss' || 
+                   tileText === 'normalize.css' || tileText === 'js/jquery/jquery ui' || tileText === 'ionicons') {
             console.log('Opening specifics app');
-            $('.app').removeClass('active').addClass('inactive');
-            $('#specifics').removeClass('inactive').addClass('active').fadeIn(200);
+            openApp('#specifics');
         } else if (tileText === 'about') {
             console.log('Opening about app - tileText was:', tileText);
-            $('.app').removeClass('active').addClass('inactive');
-            $('#about').removeClass('inactive').addClass('active').fadeIn(200);
+            openApp('#about');
         } else {
             console.log('Showing alert for tile:', tileText);
             $('.alert').fadeIn(200);

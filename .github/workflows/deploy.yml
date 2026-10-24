@@ -1,0 +1,77 @@
+name: Deploy Portfolio to AWS S3 & CloudFront
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    # Auto-sync YouTube & Blog feeds every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Sync Dynamic Feeds (YouTube, Blog, Credly)
+        run: |
+          python sync_feeds.py
+        continue-on-error: true
+
+      - name: Commit Updated Feed Cache (if changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: auto-sync YouTube and Blog feeds [skip ci]" && git push)
+        continue-on-error: true
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION || 'us-east-1' }}
+
+      - name: Sync Static Assets to AWS S3
+        run: |
+          aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} \
+            --delete \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "terraform/*" \
+            --exclude ".kilo/*" \
+            --exclude "*.py" \
+            --exclude "__pycache__/*" \
+            --exclude "README.md" \
+            --exclude "LICENSE" \
+            --exclude "stdout*" \
+            --cache-control "public, max-age=3600"
+
+          # Ensure index.html and json feeds have short/no cache for instant updates
+          aws s3 cp index.html s3://${{ secrets.S3_BUCKET_NAME }}/index.html \
+            --cache-control "public, max-age=0, must-revalidate" --content-type "text/html"
+
+          aws s3 sync data/ s3://${{ secrets.S3_BUCKET_NAME }}/data/ \
+            --cache-control "public, max-age=60, must-revalidate" --content-type "application/json"
+
+      - name: Invalidate CloudFront Distribution Cache
+        if: env.DISTRIBUTION_ID != ''
+        env:
+          DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
+

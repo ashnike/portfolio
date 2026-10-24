@@ -1,3 +1,7 @@
 __pycache__/
 *.pyc
-
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+*.png

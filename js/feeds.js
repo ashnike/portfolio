@@ -10,11 +10,99 @@
         youtubeChannelUrl: 'https://www.youtube.com/@pinakaops',
         blogSiteUrl: 'https://devopstryhard.com/',
         blogApiUrl: 'https://devopstryhard.com/wp-json/wp/v2/posts?per_page=3&_embed=true',
+        githubUserUrl: 'https://github.com/ashnike',
+        githubApiUrl: 'https://api.github.com/users/ashnike/repos?sort=updated&per_page=8',
+        whatsappUrl: 'https://wa.me/918275024922',
         localYoutubeApi: '/api/youtube',
         localBlogApi: '/api/blogs',
         staticYoutubeData: 'data/youtube.json',
         staticBlogData: 'data/blogs.json'
     };
+
+    var currentGhIdx = 0;
+    var ghProjects = [
+        { name: 'VotingApp-spring-deploy', desc: 'Java SpringBoot Voting Application & Deploy', lang: 'Java', url: 'https://github.com/ashnike/VotingApp-spring-deploy' },
+        { name: 'Mobaxterm_installation', desc: 'Automated MobaXterm Ubuntu Setup Script', lang: 'Shell', url: 'https://github.com/ashnike/Mobaxterm_installation' },
+        { name: 'portfolio', desc: 'Windows Web 8 Metro UI Portfolio', lang: 'JavaScript', url: 'https://github.com/ashnike/portfolio' },
+        { name: 'nest-hello', desc: 'NestJS TypeScript Backend Service', lang: 'TypeScript', url: 'https://github.com/ashnike/nest-hello' }
+    ];
+
+    var currentCredlyIdx = 0;
+    var credlyBadges = [
+        { name: 'AWS Certified Cloud', desc: 'Amazon Web Services \u2022 Practitioner', url: 'https://www.credly.com/org/amazon-web-services/badge/aws-certified-cloud-practitioner' },
+        { name: 'GCP Kubernetes Apps', desc: 'Google Cloud \u2022 Deploy Applications', url: 'https://www.credly.com/org/google-cloud/badge/deploy-kubernetes-applications-on-google-cloud-skil' },
+        { name: 'AWS Cloud Economics', desc: 'AWS Partner Network \u2022 FinOps', url: 'https://www.credly.com/org/amazon-web-services/badge/aws-partner-cloud-economics-essentials-training-bad' },
+        { name: 'AWS Technical Partner', desc: 'AWS Partner Network \u2022 Accredited', url: 'https://www.credly.com/org/amazon-web-services/badge/aws-partner-technical-accredited-training-badge' },
+        { name: 'GCP DevOps Workflows', desc: 'Google Cloud \u2022 Verified Skill', url: 'https://www.credly.com/org/google-cloud/badge/implement-devops-workflows-in-google-cloud-skill-badge' },
+        { name: 'Secure Cloud Network', desc: 'Google Cloud \u2022 Security & VPC', url: 'https://www.credly.com/org/google-cloud/badge/build-a-secure-google-cloud-network-skill-badge' }
+    ];
+
+    function updateCredlyTile(badge) {
+        var $tile = $('.credly-tile');
+        if (!$tile.length || !badge) return;
+        var $rotator = $tile.find('.credly-badge-rotator');
+        $rotator.css({ opacity: 0, transform: 'translateY(5px)' });
+        setTimeout(function() {
+            var url = badge.url || 'https://www.credly.com/users/ashnil-naik.b57d135a/badges';
+            $tile.attr('data-url', url);
+            $tile.find('a.tile-link').attr('href', url);
+            $tile.find('.credly-badge-title').text(badge.name);
+            $tile.find('.credly-badge-desc').text(badge.desc);
+            $rotator.css({ opacity: 1, transform: 'translateY(0)' });
+        }, 200);
+    }
+
+    function updateGhTile(project) {
+        var $tile = $('.github-tile');
+        if (!$tile.length || !project) return;
+        var $info = $tile.find('.gh-project-info');
+        $info.css({ opacity: 0, transform: 'translateY(5px)' });
+        setTimeout(function() {
+            var url = project.url || project.html_url || CONFIG.githubUserUrl;
+            $tile.attr('data-url', url);
+            $tile.find('a.tile-link').attr('href', url);
+            $tile.find('.gh-project-title').text(project.name);
+            var lang = project.lang || project.language || '';
+            var desc = project.desc || project.description || '';
+            var subtitle = lang ? ('<i class="ionicons ion-code-working"></i> ' + lang + (desc ? ' &bull; ' + desc : '')) : (desc || 'View Repository');
+            $tile.find('.gh-project-desc').html(subtitle);
+            $info.css({ opacity: 1, transform: 'translateY(0)' });
+        }, 200);
+    }
+
+    function fetchGitHubProjects() {
+        fetch(CONFIG.githubApiUrl)
+            .then(function(res) {
+                if (!res.ok) throw new Error('GitHub API unavailable');
+                return res.json();
+            })
+            .then(function(repos) {
+                if (repos && repos.length) {
+                    var list = repos.map(function(r) {
+                        return {
+                            name: r.name,
+                            desc: r.description || '',
+                            lang: r.language || '',
+                            url: r.html_url
+                        };
+                    });
+                    ghProjects = list;
+                    updateGhTile(ghProjects[0]);
+                    try {
+                        localStorage.setItem('ashnike_gh_cache', JSON.stringify(list));
+                    } catch (e) {}
+                }
+            })
+            .catch(function() {
+                try {
+                    var cached = localStorage.getItem('ashnike_gh_cache');
+                    if (cached) {
+                        ghProjects = JSON.parse(cached);
+                        updateGhTile(ghProjects[0]);
+                    }
+                } catch (e) {}
+            });
+    }
 
     // Helper: Format ISO date string to readable "Month Day, Year"
     function formatDate(dateStr) {
@@ -197,13 +285,36 @@
         initCachedFeeds();
         fetchYouTubeVideos();
         fetchBlogPosts();
+        fetchGitHubProjects();
+        updateGhTile(ghProjects[0]);
+        updateCredlyTile(credlyBadges[0]);
 
-        // Handle tile clicks for dynamic feed tiles
-        $(document).on('click', '.youtube-feed-tile, .blog-feed-tile', function(e) {
+        // Rotate GitHub projects every 4 seconds
+        setInterval(function() {
+            if (ghProjects.length > 1) {
+                currentGhIdx = (currentGhIdx + 1) % ghProjects.length;
+                updateGhTile(ghProjects[currentGhIdx]);
+            }
+        }, 4000);
+
+        // Rotate Credly badges every 3.5 seconds
+        setInterval(function() {
+            if (credlyBadges.length > 1) {
+                currentCredlyIdx = (currentCredlyIdx + 1) % credlyBadges.length;
+                updateCredlyTile(credlyBadges[currentCredlyIdx]);
+            }
+        }, 3500);
+
+        // Handle tile clicks for dynamic feed tiles & social contact tiles
+        $(document).on('click', '.youtube-feed-tile, .blog-feed-tile, .github-tile, .whatsapp-tile, .email-tile, .linkedin-tile, .aws-cert-tile, .gcp-k8s-tile, .aws-partner-tile', function(e) {
             e.stopPropagation();
             var url = $(this).attr('data-url') || $(this).find('a.tile-link').attr('href');
-            if (url) {
-                window.open(url, '_blank', 'noopener,noreferrer');
+            if (url && !url.startsWith('javascript:')) {
+                if (url.startsWith('mailto:')) {
+                    window.location.href = url;
+                } else {
+                    window.open(url, '_blank', 'noopener,noreferrer');
+                }
             }
         });
 
@@ -211,6 +322,7 @@
         setInterval(function() {
             fetchYouTubeVideos();
             fetchBlogPosts();
+            fetchGitHubProjects();
         }, 5 * 60 * 1000);
     });
 

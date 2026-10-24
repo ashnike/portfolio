@@ -118,7 +118,7 @@
             <div class="info">
                 <h1>Start</h1>
                 <div class="user">
-                    <img src="img/user.png" class="profile-pic">
+                    <img src="profile-pic.jpeg" alt="Ashnil Naik" class="profile-pic">
                     <h2>Ashnil<br><span>Naik</span></h2>
                 </div>
                 <ul class="user-menu-dropdown">
@@ -129,33 +129,284 @@
             </div>
             <div class="metro-ui">
 
+                <!-- 1. PERSONAL & CONTACT -->
                 <div class="metro-group">
                     <div class="group-header">
-                        <h2 class="group-title">Personal</h2>
+                        <h2 class="group-title">Personal &amp; Credentials</h2>
+                        <a href="javascript:void(0)" class="group-link open-credly" title="View 15 Verified Badges on Credly"><img src="img/credly.svg" style="width: 14px; vertical-align: middle; margin-right: 4px;"> Credly (15)</a>
                     </div>
                     <ul class="metro-ui-grid grid-1">
-                        <li class="brand aboutme-tile ui-sortable-handle"><a href="profile/"><img src="profile-pic.jpeg" alt="Profile"><span class="text">About Me</span></a></li>
-                        <script class="ui-sortable-handle" style="">
-                            document.addEventListener("DOMContentLoaded", function() {
-                                var tile = document.querySelector('.aboutme-tile');
-                                if (tile) {
-                                    tile.addEventListener('click', function(e) {
-                                        e.preventDefault();
-                                        window.location.href = 'profile/index.html';
-                                    });
-                                }
-                            });
-                        </script>
-                        <li class="teal ui-sortable-handle"><i class="ionicons ion-email"></i><span class="text">Mail</span></li>
-                        <li class="indigo ui-sortable-handle"><i class="ionicons ion-calendar"></i><span class="text">Calendar</span></li>
-                        <li class="small lighterBlue ui-sortable-handle"><i class="ionicons ion-social-skype"></i><span class="text">Skype</span></li>
-                        <li class="small emerald ui-sortable-handle"><i class="ionicons ion-android-playstore"></i><span class="text">Store</span></li>
-                        <li class="orange ui-sortable-handle"><i class="ionicons ion-android-contacts"></i><span class="text">People</span></li>
-                        <li class="darkIndigo ui-sortable-handle"><i class="ionicons ion-image"></i><span class="text">Photos</span></li>
-                        <li class="darkBlue ui-sortable-handle"><i class="ionicons ion-gear-a"></i><span class="text">Settings</span></li>
+                        <!-- About Me Profile Photo (2x2 Square) -->
+                        <li class="aboutme-tile tile-square ui-sortable-handle"><a href="profile/"><img src="profile-pic.jpeg" alt="Profile"><span class="text">About Me</span></a></li>
+
+                        <!-- GitHub Projects Live Tile (2x1 Wide) -->
+                        <li class="live-feed-tile github-tile tile-wide ui-sortable-handle" data-url="https://github.com/ashnike">
+                            <a href="https://github.com/ashnike" target="_blank" rel="noopener noreferrer" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/github.svg" alt="GitHub" class="tile-svg-logo">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="tile-label">GitHub &bull; ashnike</span>
+                                    <div class="gh-project-info">
+                                        <span class="tile-headline gh-project-title">VotingApp-spring-deploy</span>
+                                        <span class="tile-subtext gh-project-desc"><i class="ionicons ion-code-working"></i> Java &bull; SpringBoot App</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- WhatsApp Contact Tile (2x1 Wide) -->
+                        <li class="live-feed-tile whatsapp-tile tile-wide ui-sortable-handle" data-url="https://wa.me/918275024922">
+                            <a href="https://wa.me/918275024922" target="_blank" rel="noopener noreferrer" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/whatsapp.svg" alt="WhatsApp" class="tile-svg-logo">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="tile-label">WhatsApp</span>
+                                    <span class="tile-headline">+91 82750 24922</span>
+                                    <span class="tile-subtext"><span class="wa-dot"></span> Message Ash</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Book a Consultation / TidyCal (2x1 Wide Priority Freelance Tile) -->
+                        <li class="live-feed-tile booking-tile tile-wide open-booking ui-sortable-handle" title="Schedule a Meeting on TidyCal">
+                            <a href="javascript:void(0)" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/tidycal.svg" alt="TidyCal" class="tile-svg-logo">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="pulse-tag">TidyCal &bull; Instant</span>
+                                    <span class="tile-headline">Book on TidyCal</span>
+                                    <span class="tile-subtext"><i class="ionicons ion-calendar"></i> 15 &bull; 30 &bull; 60 Min Meetings</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Email Contact Tile (2x1 Wide) -->
+                        <li class="live-feed-tile email-tile tile-wide ui-sortable-handle" data-url="mailto:contact@pinakaops.io">
+                            <a href="mailto:contact@pinakaops.io" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/email.svg" alt="Email" class="tile-svg-logo">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="tile-label">Direct Email</span>
+                                    <span class="tile-headline">contact@pinakaops.io</span>
+                                    <span class="tile-subtext">Send Project Inquiries</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- LinkedIn Profile Tile (2x1 Wide) -->
+                        <li class="live-feed-tile linkedin-tile tile-wide ui-sortable-handle" data-url="https://www.linkedin.com/in/ashnilnaik">
+                            <a href="https://www.linkedin.com/in/ashnilnaik" target="_blank" rel="noopener noreferrer" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/linkedin.svg" alt="LinkedIn" class="tile-svg-logo">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="tile-label">LinkedIn Profile</span>
+                                    <span class="tile-headline">Ashnil Naik</span>
+                                    <span class="tile-subtext">Endorsements &bull; Network</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Resume & Rate Card Tile (2x1 Wide) -->
+                        <li class="live-feed-tile resume-tile tile-wide open-booking ui-sortable-handle">
+                            <a href="javascript:void(0)" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/briefcase.svg" alt="Resume" class="tile-svg-logo">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="tile-label">Credentials &amp; Rates</span>
+                                    <span class="tile-headline">DevOps Resume &amp; Deck</span>
+                                    <span class="tile-subtext"><i class="ionicons ion-arrow-down-a"></i> View Rate Card &amp; CV</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Credly Verified Badges Live Rotator Tile (2x1 Wide) -->
+                        <li class="live-feed-tile credly-tile tile-wide open-credly ui-sortable-handle" data-url="https://www.credly.com/users/ashnil-naik.b57d135a/badges" title="View 15 Verified Badges on Credly">
+                            <a href="https://www.credly.com/users/ashnil-naik.b57d135a/badges" target="_blank" rel="noopener noreferrer" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/credly.svg" alt="Credly" class="tile-svg-logo">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="tile-label"><i class="ionicons ion-ribbon-b"></i> Credly &bull; 15 Badges</span>
+                                    <div class="credly-badge-rotator">
+                                        <span class="tile-headline credly-badge-title">AWS Certified Cloud</span>
+                                        <span class="tile-subtext credly-badge-desc">Amazon Web Services &bull; Verified</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- AWS Certified Cloud Practitioner Tile (2x1 Wide) -->
+                        <li class="live-feed-tile aws-cert-tile tile-wide ui-sortable-handle" data-url="https://www.credly.com/org/amazon-web-services/badge/aws-certified-cloud-practitioner" title="AWS Certified Cloud Practitioner Credential">
+                            <a href="https://www.credly.com/org/amazon-web-services/badge/aws-certified-cloud-practitioner" target="_blank" rel="noopener noreferrer" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/badges/aws-certified.png" alt="AWS Certified" class="tile-badge-img">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="tile-label">AWS Certification</span>
+                                    <span class="tile-headline">Cloud Practitioner</span>
+                                    <span class="tile-subtext">Issued by AWS &bull; Verified</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Google Cloud Kubernetes Applications Skill Badge (2x1 Wide) -->
+                        <li class="live-feed-tile gcp-k8s-tile tile-wide ui-sortable-handle" data-url="https://www.credly.com/org/google-cloud/badge/deploy-kubernetes-applications-on-google-cloud-skil" title="Google Cloud Kubernetes Application Badge">
+                            <a href="https://www.credly.com/org/google-cloud/badge/deploy-kubernetes-applications-on-google-cloud-skil" target="_blank" rel="noopener noreferrer" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/badges/gcp-kubernetes.png" alt="GCP Kubernetes" class="tile-badge-img">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="tile-label">Google Cloud Badge</span>
+                                    <span class="tile-headline">Kubernetes Apps</span>
+                                    <span class="tile-subtext">GKE &bull; Containers &bull; Verified</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- AWS Partner: Cloud Economics / FinOps Badge (2x1 Wide) -->
+                        <li class="live-feed-tile aws-partner-tile tile-wide ui-sortable-handle" data-url="https://www.credly.com/org/amazon-web-services/badge/aws-partner-cloud-economics-essentials-training-bad" title="AWS Cloud Economics & FinOps">
+                            <a href="https://www.credly.com/org/amazon-web-services/badge/aws-partner-cloud-economics-essentials-training-bad" target="_blank" rel="noopener noreferrer" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/badges/aws-finops.png" alt="AWS FinOps" class="tile-badge-img">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="tile-label">AWS Partner Network</span>
+                                    <span class="tile-headline">Cloud Economics</span>
+                                    <span class="tile-subtext">FinOps Accredited &bull; Verified</span>
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
+                <!-- 2. DEVOPS & CLOUD SERVICES -->
+                <div class="metro-group">
+                    <div class="group-header">
+                        <h2 class="group-title">DevOps &amp; Cloud Services</h2>
+                        <a href="javascript:void(0)" class="group-link open-services" title="View Full Service Offerings"><i class="ionicons ion-information-circled"></i> Details</a>
+                    </div>
+                    <ul class="metro-ui-grid grid-services">
+                        <!-- Kubernetes & Cloud Native -->
+                        <li class="live-feed-tile service-k8s tile-wide open-services ui-sortable-handle">
+                            <a href="javascript:void(0)" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/kubernetes.svg" alt="Kubernetes" class="tile-svg-logo">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="tile-label">Container Orchestration</span>
+                                    <span class="tile-headline">Kubernetes &amp; EKS/GKE</span>
+                                    <span class="tile-subtext">Helm &bull; ArgoCD &bull; GitOps</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Cloud Architecture & Migration -->
+                        <li class="live-feed-tile service-cloud tile-wide open-services ui-sortable-handle">
+                            <a href="javascript:void(0)" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/aws.svg" alt="AWS Cloud" class="tile-svg-logo">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="tile-label">Cloud Infrastructure</span>
+                                    <span class="tile-headline">AWS Architecture &amp; Migration</span>
+                                    <span class="tile-subtext">VPC &bull; IAM &bull; Multi-Account</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Infrastructure as Code (Terraform) -->
+                        <li class="live-feed-tile service-iac tile-wide open-services ui-sortable-handle">
+                            <a href="javascript:void(0)" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/terraform.svg" alt="Terraform" class="tile-svg-logo">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="tile-label">Automation &amp; IaC</span>
+                                    <span class="tile-headline">Terraform &amp; Ansible</span>
+                                    <span class="tile-subtext">Modular &bull; Zero-Drift Infra</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- CI/CD Pipelines -->
+                        <li class="live-feed-tile service-cicd tile-wide open-services ui-sortable-handle">
+                            <a href="javascript:void(0)" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/pipeline.svg" alt="CI/CD" class="tile-svg-logo">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="tile-label">Release Engineering</span>
+                                    <span class="tile-headline">CI/CD Pipelines</span>
+                                    <span class="tile-subtext">GitHub Actions &bull; Fast Deploys</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Cloud Cost Optimization (FinOps) -->
+                        <li class="live-feed-tile service-cost tile-wide open-services ui-sortable-handle">
+                            <a href="javascript:void(0)" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/cost.svg" alt="FinOps" class="tile-svg-logo">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="tile-label">FinOps &bull; Cost Cutting</span>
+                                    <span class="tile-headline">Cloud Cost Optimization</span>
+                                    <span class="tile-subtext">30–60% AWS Bill Reduction</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Case Studies & Proven ROI -->
+                        <li class="live-feed-tile service-cases tile-wide open-casestudies ui-sortable-handle">
+                            <a href="javascript:void(0)" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/briefcase.svg" alt="Case Studies" class="tile-svg-logo">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="tile-label">Client Wins &amp; ROI</span>
+                                    <span class="tile-headline">Case Studies &amp; Impact</span>
+                                    <span class="tile-subtext">70% NAT Savings &bull; 99.99% Uptime</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- DevSecOps & Cloud Security -->
+                        <li class="live-feed-tile service-sec tile-wide open-services ui-sortable-handle" title="View DevSecOps & Security Services">
+                            <a href="javascript:void(0)" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/shield.svg" alt="DevSecOps" class="tile-svg-logo">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="tile-label">Security &amp; Compliance</span>
+                                    <span class="tile-headline">DevSecOps &amp; Security</span>
+                                    <span class="tile-subtext">IAM &bull; CIS Hardening &bull; Audits</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Observability & Monitoring -->
+                        <li class="live-feed-tile service-sre tile-wide open-services ui-sortable-handle">
+                            <a href="javascript:void(0)" class="tile-link modern-tile-content">
+                                <div class="tile-icon-box">
+                                    <img src="img/prometheus.svg" alt="Monitoring" class="tile-svg-logo">
+                                </div>
+                                <div class="tile-text-box">
+                                    <span class="tile-label">Observability &amp; SRE</span>
+                                    <span class="tile-headline">Prometheus &amp; Grafana</span>
+                                    <span class="tile-subtext">Alerting &bull; CloudWatch &bull; SLOs</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 3. YOUTUBE CHANNEL -->
                 <div class="metro-group">
                     <div class="group-header">
                         <h2 class="group-title">PinakaOps &bull; YouTube</h2>
@@ -205,6 +456,7 @@
                     </ul>
                 </div>
 
+                <!-- 4. DEVOPS TRYHARD BLOG -->
                 <div class="metro-group">
                     <div class="group-header">
                         <h2 class="group-title">DevOps TryHard &bull; Blog</h2>
@@ -254,60 +506,481 @@
                     </ul>
                 </div>
 
+                <!-- 5. CLOUD & DEVOPS TECH STACK -->
                 <div class="metro-group">
                     <div class="group-header">
-                        <h2 class="group-title">Windows Apps</h2>
+                        <h2 class="group-title">Cloud &amp; DevOps Tech Stack</h2>
                     </div>
-                    <ul class="metro-ui-grid grid-2">
-                        <li class="amber"><i class="ionicons ion-ios-partlysunny"></i><span class="text">Weather</span></li>
-                        <li class="small darkViolet"><i class="ionicons ion-android-map"></i><span class="text">Maps</span></li>
-                        <li class="small darkCyan"><i class="ionicons ion-cloud"></i><span class="text">OneDrive</span></li>
-                        <li class="violet"><i class="ionicons ion-chatbox-working"></i><span class="text">Messaging</span></li>
-                        <li class="green"><i class="ionicons ion-arrow-graph-up-right"></i><span class="text">Finance</span></li>
-                        <li class="magenta"><i class="ionicons ion-ios-basketball"></i><span class="text">Sports</span></li>
-                        <li class="red"><i class="ionicons ion-ios-pulse"></i><span class="text">Health</span></li>
-                        <li class="pink"><i class="ionicons ion-search"></i><span class="text">Bing</span></li>
-                        <li class="teal"><i class="ionicons ion-bag"></i><span class="text">Travel</span></li>
-                        <li class="small emerald"><i class="ionicons ion-ios-game-controller-b"></i><span class="text">Games</span></li>
-                        <li class="small violet"><i class="ionicons ion-camera"></i><span class="text">Camera</span></li>
-                        <li class="small orange"><i class="ionicons ion-headphone"></i><span class="text">Music</span></li>
-                        <li class="small crimson"><i class="ionicons ion-social-youtube-outline"></i><span class="text">Video</span></li>
-                        <li class="darkCobalt"><i class="ionicons ion-image"></i><span class="text">Photos</span></li>
-                        <li class="small darkTeal"><i class="ionicons ion-calculator"></i><span class="text">Calculator</span></li>
-                        <li class="small amber"><i class="ionicons ion-ios-compose"></i><span class="text">Notes</span></li>
-                        <li class="small crimson"><i class="ionicons ion-ios-book"></i><span class="text">Reader</span></li>
-                        <li class="small teal"><i class="ionicons ion-ios-musical-notes"></i><span class="text">Xbox Music</span></li>
-                        <li class="darkIndigo"><i class="ionicons ion-ios-film"></i><span class="text">Movies</span></li>
+                    <ul class="metro-ui-grid grid-tech">
+                        <!-- AWS -->
+                        <li class="tech-tile orange ui-sortable-handle" style="background: #232f3e;">
+                            <div class="tech-icon"><img src="img/aws.svg" alt="AWS"></div>
+                            <span class="text">AWS Cloud</span>
+                        </li>
+                        <!-- Kubernetes -->
+                        <li class="tech-tile blue ui-sortable-handle" style="background: #326ce5;">
+                            <div class="tech-icon"><img src="img/kubernetes.svg" alt="Kubernetes"></div>
+                            <span class="text">Kubernetes</span>
+                        </li>
+                        <!-- Terraform -->
+                        <li class="tech-tile violet ui-sortable-handle" style="background: #623099;">
+                            <div class="tech-icon"><img src="img/terraform.svg" alt="Terraform"></div>
+                            <span class="text">Terraform</span>
+                        </li>
+                        <!-- Docker -->
+                        <li class="tech-tile darkBlue ui-sortable-handle" style="background: #0288d1;">
+                            <div class="tech-icon"><img src="img/docker.svg" alt="Docker"></div>
+                            <span class="text">Docker</span>
+                        </li>
+                        <!-- Ansible -->
+                        <li class="tech-tile red ui-sortable-handle" style="background: #c62828;">
+                            <div class="tech-icon"><img src="img/ansible.svg" alt="Ansible"></div>
+                            <span class="text">Ansible</span>
+                        </li>
+                        <!-- Linux -->
+                        <li class="tech-tile amber ui-sortable-handle" style="background: #d88900;">
+                            <div class="tech-icon"><img src="img/linux.svg" alt="Linux"></div>
+                            <span class="text">Linux &amp; Shell</span>
+                        </li>
+                        <!-- Prometheus -->
+                        <li class="tech-tile crimson ui-sortable-handle" style="background: #e6522c;">
+                            <div class="tech-icon"><img src="img/prometheus.svg" alt="Prometheus"></div>
+                            <span class="text">Prometheus</span>
+                        </li>
+                        <!-- CI/CD -->
+                        <li class="tech-tile darkCyan ui-sortable-handle" style="background: #00838f;">
+                            <div class="tech-icon"><img src="img/pipeline.svg" alt="CI/CD"></div>
+                            <span class="text">CI/CD Pipelines</span>
+                        </li>
+                        <!-- FinOps -->
+                        <li class="tech-tile green ui-sortable-handle" style="background: #00897b;">
+                            <div class="tech-icon"><img src="img/cost.svg" alt="FinOps"></div>
+                            <span class="text">FinOps / Cost</span>
+                        </li>
+                        <!-- Python -->
+                        <li class="tech-tile darkTeal ui-sortable-handle" style="background: #306998;">
+                            <div class="tech-icon"><i class="ionicons ion-social-python" style="color: #ffd43b;"></i></div>
+                            <span class="text">Python Automation</span>
+                        </li>
+                        <!-- GitOps -->
+                        <li class="tech-tile magenta ui-sortable-handle" style="background: #d81b60;">
+                            <div class="tech-icon"><i class="ionicons ion-merge" style="color: #fff;"></i></div>
+                            <span class="text">GitOps &bull; ArgoCD</span>
+                        </li>
+                        <!-- Networking -->
+                        <li class="tech-tile teal ui-sortable-handle" style="background: #00796b;">
+                            <div class="tech-icon"><i class="ionicons ion-network" style="color: #fff;"></i></div>
+                            <span class="text">Nginx &bull; DNS</span>
+                        </li>
                     </ul>
                 </div>
 
-                <div class="metro-group">
-                    <div class="group-header">
-                        <h2 class="group-title">Tools &amp; Skills</h2>
-                    </div>
-                    <ul class="metro-ui-grid grid-3">
-                        <li class="orange"><i class="ionicons ion-social-html5"></i><span class="text">HTML5</span></li>
-                        <li class="blue"><i class="ionicons ion-social-css3"></i><span class="text">CSS3</span></li>
-                        <li class="magenta"><i class="ionicons ion-social-sass"></i><span class="text">SASS/SCSS</span></li>
-                        <li class="red"><i class="ionicons ion-ios-infinite"></i><span class="text">normalize.css</span></li>
-                        <li class="violet"><i class="ionicons ion-social-javascript"></i><span class="text">JS/jQuery/jQuery UI</span></li>
-                        <li class="darkTeal"><i class="ionicons ion-android-apps"></i><span class="text">Ionicons</span></li>
-                        <li class="darkBlue"><img src="img/brackets.png" style="width: 12vh; height: 12vh; display: inline-block;"><span class="text">Adobe Brackets</span></li>
-                        <li class="green"><i class="ionicons ion-android-share-alt"></i><span class="text">Share</span></li>
-                        <li class="teal"><i class="ionicons ion-code"></i><span class="text">Code</span></li>
-                        <li class="gray"><i class="ionicons ion-wrench"></i><span class="text">Front-End Tools</span></li>
-                        <li class="amber"><i class="ionicons ion-coffee"></i><span class="text">Coffee</span></li>
-                        <li class="loveRed"><i class="ionicons ion-android-favorite"></i><span class="text">Love</span></li>
-                        <li class="small darkCyan"><i class="ionicons ion-ios-folder"></i><span class="text">Explorer</span></li>
-                        <li class="small gray"><i class="ionicons ion-ios-trash"></i><span class="text">Recycle Bin</span></li>
-                        <li class="darkCobalt"><i class="ionicons ion-monitor"></i><span class="text">Desktop</span></li>
-                    </ul>
-                </div>
             </div>
             <div class="desktop-activator"><i class="ionicons ion-social-windows"></i></div>
         </div>
         
         <!-- APPS -->
+        <!-- 1. BOOKING APP WINDOW (TIDYCAL INTEGRATION) -->
+        <div class="app booking inactive" id="booking-app" style="width: 82vw; max-width: 1050px; left: calc(50vw - 41vw); top: 5vh; height: 90vh;">
+            <div class="title">
+                <p><img src="img/tidycal.svg" style="width: 14px; vertical-align: middle; margin-right: 6px;"> Schedule a Consultation &bull; Ashnil Naik (TidyCal)</p>
+            </div>
+            <ul class="action-buttons">
+                <li class="close" title="Close"><i class="ionicons ion-android-close"></i></li>
+                <li class="maximize" title="Maximize"><i class="ionicons ion-android-checkbox-outline-blank"></i></li>
+                <li class="minimize" title="Minimize"><i class="ionicons ion-ios-minus-empty"></i></li>
+            </ul>
+            <div class="container devops-dialog" style="height: calc(100% - 3.90625vh); overflow-y: auto;">
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 0.8vh;">
+                    <h2><img src="img/tidycal.svg" style="width: 26px; vertical-align: middle; margin-right: 8px;"> Schedule with Ashnil Naik</h2>
+                    <a href="https://tidycal.com/ashnilnaik777" target="_blank" rel="noopener noreferrer" class="tidycal-direct-badge">
+                        <i class="ionicons ion-android-open"></i> tidycal.com/ashnilnaik777
+                    </a>
+                </div>
+                <div class="divider"></div>
+                <p>Hire Ashnil for high-impact DevOps, Kubernetes, Cloud Migration, and Cost Optimization consulting. Choose a meeting package below for instant confirmation, or pick a date directly on the embedded calendar.</p>
+                
+                <div class="service-card-grid">
+                    <!-- 15-Minute Meeting -->
+                    <div class="service-card">
+                        <h4><img src="img/tidycal.svg" style="width: 16px; vertical-align: middle;"> 15 Minute Discovery</h4>
+                        <p style="font-size: 1.4vh; color: #aaa;">Quick initial chat to discuss your cloud setup, blockers, and consulting scope.</p>
+                        <ul>
+                            <li>Architecture evaluation</li>
+                            <li>Immediate bottleneck review</li>
+                            <li>Project timeline &amp; estimate</li>
+                        </ul>
+                        <a href="https://tidycal.com/ashnilnaik777/15-minute-meeting" target="_blank" rel="noopener noreferrer" class="btn-tidycal"><img src="img/tidycal.svg" style="width: 13px; vertical-align: middle;"> Book 15-Min Meeting</a>
+                    </div>
+                    <!-- 30-Minute Meeting -->
+                    <div class="service-card" style="border-color: rgba(21, 105, 238, 0.5); background: rgba(21, 105, 238, 0.08);">
+                        <h4><img src="img/tidycal.svg" style="width: 16px; vertical-align: middle;"> 30 Minute Strategy Session</h4>
+                        <p style="font-size: 1.4vh; color: #aaa;">Technical deep dive into AWS architecture, Kubernetes, or CI/CD pipelines.</p>
+                        <ul>
+                            <li>Deep architectural dive</li>
+                            <li>FinOps cost cut strategy (30–60%)</li>
+                            <li>Actionable implementation roadmap</li>
+                        </ul>
+                        <a href="https://tidycal.com/ashnilnaik777/30-minute-meeting" target="_blank" rel="noopener noreferrer" class="btn-tidycal btn-tidycal-featured"><img src="img/tidycal.svg" style="width: 13px; vertical-align: middle;"> Book 30-Min Strategy</a>
+                    </div>
+                    <!-- 60-Minute Meeting -->
+                    <div class="service-card">
+                        <h4><img src="img/tidycal.svg" style="width: 16px; vertical-align: middle;"> 60 Minute Architecture &amp; Audit</h4>
+                        <p style="font-size: 1.4vh; color: #aaa;">Full-scale infrastructure review, live troubleshooting, and sprint planning.</p>
+                        <ul>
+                            <li>Production EKS/GKE cluster health</li>
+                            <li>Zero-downtime CI/CD automation</li>
+                            <li>Dedicated delivery sprint scope</li>
+                        </ul>
+                        <a href="https://tidycal.com/ashnilnaik777/60-minute-meeting" target="_blank" rel="noopener noreferrer" class="btn-tidycal"><img src="img/tidycal.svg" style="width: 13px; vertical-align: middle;"> Book 60-Min Deep Dive</a>
+                    </div>
+                </div>
+
+                <!-- Embedded Interactive TidyCal Calendar -->
+                <div class="tidycal-calendar-section">
+                    <div class="tidycal-calendar-bar">
+                        <span><i class="ionicons ion-calendar"></i> Interactive TidyCal Booking (Direct Sync)</span>
+                        <a href="https://tidycal.com/ashnilnaik777" target="_blank" rel="noopener noreferrer" class="tidycal-open-ext"><i class="ionicons ion-android-open"></i> Open in New Tab</a>
+                    </div>
+                    <div class="tidycal-iframe-container">
+                        <iframe src="https://tidycal.com/ashnilnaik777?embed=1" class="tidycal-iframe" loading="lazy" title="TidyCal Appointment Scheduling"></iframe>
+                    </div>
+                </div>
+
+                <div class="btn-cta-group">
+                    <a href="https://tidycal.com/ashnilnaik777" target="_blank" rel="noopener noreferrer" class="btn-cta-primary" style="background: #1569ee;"><img src="img/tidycal.svg" style="width: 16px; vertical-align: middle;"> Open Full TidyCal Page</a>
+                    <a href="https://wa.me/918275024922" target="_blank" rel="noopener noreferrer" class="btn-cta-secondary"><i class="ionicons ion-social-whatsapp"></i> Chat on WhatsApp (+91 82750 24922)</a>
+                    <a href="mailto:contact@pinakaops.io?subject=DevOps%20Freelance%20Consulting%20Inquiry" class="btn-cta-primary"><i class="ionicons ion-email"></i> Email contact@pinakaops.io</a>
+                    <a href="https://github.com/ashnike" target="_blank" rel="noopener noreferrer" class="btn-cta-primary" style="background: #24292e;"><i class="ionicons ion-social-github"></i> GitHub Repos</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. SERVICES APP WINDOW -->
+        <div class="app services inactive" id="services-app" style="width: 80vw; max-width: 1000px; left: calc(50vw - 40vw); top: 8vh;">
+            <div class="title">
+                <p>DevOps &amp; Cloud Engineering Services &bull; Scope &amp; Deliverables</p>
+            </div>
+            <ul class="action-buttons">
+                <li class="close" title="Close"><i class="ionicons ion-android-close"></i></li>
+                <li class="maximize" title="Maximize"><i class="ionicons ion-android-checkbox-outline-blank"></i></li>
+                <li class="minimize" title="Minimize"><i class="ionicons ion-ios-minus-empty"></i></li>
+            </ul>
+            <div class="container devops-dialog">
+                <h2><i class="ionicons ion-settings"></i> Professional Freelance Services</h2>
+                <div class="divider"></div>
+                <p>Tailored DevOps engineering and cloud infrastructure solutions designed to scale reliably and cut operating overhead.</p>
+
+                <div class="service-card-grid">
+                    <div class="service-card">
+                        <h4><img src="img/kubernetes.svg" style="width: 20px; vertical-align: middle;"> Kubernetes &amp; Cloud Native</h4>
+                        <ul>
+                            <li>EKS &amp; GKE production cluster architecture</li>
+                            <li>Helm charts, Kustomize &amp; ArgoCD GitOps</li>
+                            <li>Ingress controllers, Cert-Manager &amp; Service Mesh</li>
+                            <li>Zero-downtime blue/green &amp; canary rollouts</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h4><img src="img/aws.svg" style="width: 20px; vertical-align: middle;"> Cloud Architecture &amp; AWS</h4>
+                        <ul>
+                            <li>Multi-account AWS Organizations &amp; IAM least privilege</li>
+                            <li>VPC peering, Transit Gateway, and NAT architectures</li>
+                            <li>Serverless Lambda, SNS, and SQS event-driven workflows</li>
+                            <li>Hybrid cloud and on-prem to cloud migrations</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h4><img src="img/terraform.svg" style="width: 20px; vertical-align: middle;"> Infrastructure as Code (IaC)</h4>
+                        <ul>
+                            <li>Modular, reusable Terraform &amp; OpenTofu configurations</li>
+                            <li>State management, drift detection &amp; locking (S3/DynamoDB)</li>
+                            <li>Ansible playbooks for automated server provisioning</li>
+                            <li>Automated compliance and policy enforcement</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h4><img src="img/pipeline.svg" style="width: 20px; vertical-align: middle;"> CI/CD Pipeline Automation</h4>
+                        <ul>
+                            <li>GitHub Actions, GitLab CI &amp; Jenkins build pipelines</li>
+                            <li>Docker container caching &amp; multi-stage image optimization</li>
+                            <li>Automated security scanning (Trivy, SonarQube, Snyk)</li>
+                            <li>Deployment speedup from hours to minutes</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h4><img src="img/cost.svg" style="width: 20px; vertical-align: middle;"> FinOps &amp; Cloud Cost Cutting</h4>
+                        <ul>
+                            <li>High-cost NAT Gateway replacements (e.g. fck-nat architectures)</li>
+                            <li>Graviton / ARM migration and Spot instance strategies</li>
+                            <li>Unattached volume, snapshot, and idle resource pruning</li>
+                            <li>Guaranteed 30–60% recurring AWS invoice savings</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h4><img src="img/shield.svg" style="width: 20px; vertical-align: middle;"> DevSecOps &amp; Cloud Security</h4>
+                        <ul>
+                            <li>IAM least privilege policies &amp; AWS GuardDuty/SecurityHub</li>
+                            <li>Trivy &amp; Snyk automated container vulnerability scans</li>
+                            <li>Secrets management with HashiCorp Vault &amp; AWS Secrets Manager</li>
+                            <li>CIS benchmark compliance &amp; cloud infrastructure hardening</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h4><img src="img/prometheus.svg" style="width: 20px; vertical-align: middle;"> Observability &amp; Reliability (SRE)</h4>
+                        <ul>
+                            <li>Prometheus metric scrapers &amp; Grafana dashboard suites</li>
+                            <li>CloudWatch metric filters, alarms &amp; Slack/PagerDuty hooks</li>
+                            <li>Centralized logging with Loki / Fluentbit / OpenSearch</li>
+                            <li>SLO/SLA definition and automated incident response</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="btn-cta-group">
+                    <a href="https://tidycal.com/ashnilnaik777" target="_blank" rel="noopener noreferrer" class="btn-cta-primary" style="background: #1569ee;"><img src="img/tidycal.svg" style="width: 15px; vertical-align: middle;"> Book on TidyCal</a>
+                    <button class="btn-cta-primary open-booking-btn"><i class="ionicons ion-calendar"></i> View Meeting Options</button>
+                    <a href="https://wa.me/918275024922" target="_blank" rel="noopener noreferrer" class="btn-cta-secondary"><i class="ionicons ion-social-whatsapp"></i> Inquire on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. CASE STUDIES APP WINDOW -->
+        <div class="app casestudies inactive" id="casestudies-app" style="width: 80vw; max-width: 1000px; left: calc(50vw - 40vw); top: 8vh;">
+            <div class="title">
+                <p>Case Studies &amp; Proven Impact &bull; Ashnil Naik</p>
+            </div>
+            <ul class="action-buttons">
+                <li class="close" title="Close"><i class="ionicons ion-android-close"></i></li>
+                <li class="maximize" title="Maximize"><i class="ionicons ion-android-checkbox-outline-blank"></i></li>
+                <li class="minimize" title="Minimize"><i class="ionicons ion-ios-minus-empty"></i></li>
+            </ul>
+            <div class="container devops-dialog">
+                <h2><i class="ionicons ion-ribbon-b"></i> Proven Results &amp; Architecture Wins</h2>
+                <div class="divider"></div>
+                <p>Real-world client outcomes delivered through robust cloud engineering and cost-conscious architecture.</p>
+
+                <div class="service-card-grid">
+                    <div class="service-card">
+                        <h4 style="color: #64ffda;"><i class="ionicons ion-arrow-graph-down-right"></i> 70% AWS NAT Gateway Cost Reduction</h4>
+                        <p style="font-size: 1.4vh; color: #e0e0e0; font-weight: 600;">Solution: Low-Cost fck-nat Architecture</p>
+                        <p style="font-size: 1.4vh; color: #aaa;">Replaced expensive managed AWS NAT Gateways ($0.045/hr + $0.045/GB) with highly resilient, ARM-based fck-nat EC2 instances, ENI attachments, and route table automation.</p>
+                        <ul>
+                            <li>Slashed client's monthly cloud networking bill by &gt;70%</li>
+                            <li>Zero packet loss during rolling instance replacements</li>
+                            <li>Documented on DevOpsTryHard</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h4 style="color: #8ab4f8;"><i class="ionicons ion-cube"></i> Production Kubernetes Scheduling &amp; HA</h4>
+                        <p style="font-size: 1.4vh; color: #e0e0e0; font-weight: 600;">Solution: Node Affinity, Taints &amp; Pod Disruption Budgets</p>
+                        <p style="font-size: 1.4vh; color: #aaa;">Engineered resilient Kubernetes scheduling to balance heterogeneous workloads across edge and cloud worker nodes, preventing OOM cascading failures.</p>
+                        <ul>
+                            <li>Achieved 99.99% service uptime</li>
+                            <li>Automated pod eviction protection and rolling updates</li>
+                            <li>Full GitOps automation with ArgoCD</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h4 style="color: #ffd43b;"><i class="ionicons ion-flash"></i> Automated Cloud Cost Optimization &amp; Slack Ops</h4>
+                        <p style="font-size: 1.4vh; color: #e0e0e0; font-weight: 600;">Solution: Serverless Lambda Auto-Scheduling</p>
+                        <p style="font-size: 1.4vh; color: #aaa;">Developed automated AWS Lambda functions with EventBridge, SNS, and Slack notifications to dynamically spin down non-production EC2 &amp; RDS instances during off-peak hours.</p>
+                        <ul>
+                            <li>Saved ~40% on staging and testing infrastructure</li>
+                            <li>Instant Slack chatops notifications for developer teams</li>
+                            <li>Covered in step-by-step video on PinakaOps YouTube</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="btn-cta-group">
+                    <a href="https://tidycal.com/ashnilnaik777" target="_blank" rel="noopener noreferrer" class="btn-cta-primary" style="background: #1569ee;"><img src="img/tidycal.svg" style="width: 15px; vertical-align: middle;"> Schedule on TidyCal</a>
+                    <button class="btn-cta-primary open-booking-btn"><i class="ionicons ion-calendar"></i> Meeting Packages</button>
+                    <a href="https://wa.me/918275024922" target="_blank" rel="noopener noreferrer" class="btn-cta-secondary"><i class="ionicons ion-social-whatsapp"></i> Message on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. CREDLY VERIFIED CREDENTIALS APP WINDOW -->
+        <div class="app credly inactive" id="credly-app" style="width: 82vw; max-width: 1050px; left: calc(50vw - 41vw); top: 5vh; height: 90vh;">
+            <div class="title">
+                <p><img src="img/credly.svg" style="width: 14px; vertical-align: middle; margin-right: 6px;"> Verified Credentials &bull; Ashnil Naik (Credly)</p>
+            </div>
+            <ul class="action-buttons">
+                <li class="close" title="Close"><i class="ionicons ion-android-close"></i></li>
+                <li class="maximize" title="Maximize"><i class="ionicons ion-android-checkbox-outline-blank"></i></li>
+                <li class="minimize" title="Minimize"><i class="ionicons ion-ios-minus-empty"></i></li>
+            </ul>
+            <div class="container devops-dialog" style="height: calc(100% - 3.90625vh); overflow-y: auto;">
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 0.8vh;">
+                    <h2><img src="img/credly.svg" style="width: 24px; vertical-align: middle; margin-right: 8px;"> 15 Verified Digital Credentials</h2>
+                    <a href="https://www.credly.com/users/ashnil-naik.b57d135a/badges" target="_blank" rel="noopener noreferrer" class="tidycal-direct-badge" style="background: rgba(255, 107, 0, 0.2); border-color: rgba(255, 107, 0, 0.5); color: #ff9e43 !important;">
+                        <i class="ionicons ion-android-open"></i> credly.com/users/ashnil-naik.b57d135a
+                    </a>
+                </div>
+                <div class="divider"></div>
+                <p>Digital badges and industry certifications issued by Amazon Web Services and Google Cloud, cryptographically verified on Credly.</p>
+
+                <div class="credly-badge-grid">
+                    <!-- 1. AWS Certified Cloud Practitioner -->
+                    <div class="credly-card">
+                        <img src="img/badges/aws-certified.png" alt="AWS Certified" class="credly-card-img">
+                        <div class="credly-card-info">
+                            <span class="credly-card-title">AWS Certified Cloud Practitioner</span>
+                            <span class="credly-card-issuer"><i class="ionicons ion-checkmark-circled" style="color: #00ff88;"></i> Amazon Web Services Training</span>
+                            <a href="https://www.credly.com/org/amazon-web-services/badge/aws-certified-cloud-practitioner" target="_blank" rel="noopener noreferrer" class="credly-card-link"><i class="ionicons ion-ribbon-b"></i> Verify on Credly</a>
+                        </div>
+                    </div>
+
+                    <!-- 2. Deploy Kubernetes Applications on Google Cloud -->
+                    <div class="credly-card">
+                        <img src="img/badges/gcp-kubernetes.png" alt="GCP Kubernetes" class="credly-card-img">
+                        <div class="credly-card-info">
+                            <span class="credly-card-title">Deploy Kubernetes Applications</span>
+                            <span class="credly-card-issuer"><i class="ionicons ion-checkmark-circled" style="color: #00ff88;"></i> Google Cloud Skill Badge</span>
+                            <a href="https://www.credly.com/org/google-cloud/badge/deploy-kubernetes-applications-on-google-cloud-skil" target="_blank" rel="noopener noreferrer" class="credly-card-link"><i class="ionicons ion-ribbon-b"></i> Verify on Credly</a>
+                        </div>
+                    </div>
+
+                    <!-- 3. AWS Partner: Cloud Economics Essentials -->
+                    <div class="credly-card">
+                        <img src="img/badges/aws-finops.png" alt="AWS FinOps" class="credly-card-img">
+                        <div class="credly-card-info">
+                            <span class="credly-card-title">AWS Partner: Cloud Economics (FinOps)</span>
+                            <span class="credly-card-issuer"><i class="ionicons ion-checkmark-circled" style="color: #00ff88;"></i> AWS Partner Network</span>
+                            <a href="https://www.credly.com/org/amazon-web-services/badge/aws-partner-cloud-economics-essentials-training-bad" target="_blank" rel="noopener noreferrer" class="credly-card-link"><i class="ionicons ion-ribbon-b"></i> Verify on Credly</a>
+                        </div>
+                    </div>
+
+                    <!-- 4. AWS Partner: Technical Accredited -->
+                    <div class="credly-card">
+                        <img src="img/badges/aws-partner-tech.png" alt="AWS Technical" class="credly-card-img">
+                        <div class="credly-card-info">
+                            <span class="credly-card-title">AWS Partner: Technical Accredited</span>
+                            <span class="credly-card-issuer"><i class="ionicons ion-checkmark-circled" style="color: #00ff88;"></i> AWS Partner Network</span>
+                            <a href="https://www.credly.com/org/amazon-web-services/badge/aws-partner-technical-accredited-training-badge" target="_blank" rel="noopener noreferrer" class="credly-card-link"><i class="ionicons ion-ribbon-b"></i> Verify on Credly</a>
+                        </div>
+                    </div>
+
+                    <!-- 5. Implement DevOps Workflows in Google Cloud -->
+                    <div class="credly-card">
+                        <img src="img/badges/gcp-devops.png" alt="GCP DevOps" class="credly-card-img">
+                        <div class="credly-card-info">
+                            <span class="credly-card-title">Implement DevOps Workflows</span>
+                            <span class="credly-card-issuer"><i class="ionicons ion-checkmark-circled" style="color: #00ff88;"></i> Google Cloud Skill Badge</span>
+                            <a href="https://www.credly.com/org/google-cloud/badge/implement-devops-workflows-in-google-cloud-skill-badge" target="_blank" rel="noopener noreferrer" class="credly-card-link"><i class="ionicons ion-ribbon-b"></i> Verify on Credly</a>
+                        </div>
+                    </div>
+
+                    <!-- 6. Build a Secure Google Cloud Network -->
+                    <div class="credly-card">
+                        <img src="img/badges/gcp-network.png" alt="GCP Network" class="credly-card-img">
+                        <div class="credly-card-info">
+                            <span class="credly-card-title">Build a Secure Cloud Network</span>
+                            <span class="credly-card-issuer"><i class="ionicons ion-checkmark-circled" style="color: #00ff88;"></i> Google Cloud Skill Badge</span>
+                            <a href="https://www.credly.com/org/google-cloud/badge/build-a-secure-google-cloud-network-skill-badge" target="_blank" rel="noopener noreferrer" class="credly-card-link"><i class="ionicons ion-ribbon-b"></i> Verify on Credly</a>
+                        </div>
+                    </div>
+
+                    <!-- 7. Implement Load Balancing on Compute Engine -->
+                    <div class="credly-card">
+                        <img src="https://images.credly.com/images/eea11cba-2a98-4bbe-bad2-447878dd34a2/image.png" alt="Load Balancing" class="credly-card-img">
+                        <div class="credly-card-info">
+                            <span class="credly-card-title">Load Balancing on Compute Engine</span>
+                            <span class="credly-card-issuer"><i class="ionicons ion-checkmark-circled" style="color: #00ff88;"></i> Google Cloud Skill Badge</span>
+                            <a href="https://www.credly.com/org/google-cloud/badge/implement-load-balancing-on-compute-engine-skill-badge" target="_blank" rel="noopener noreferrer" class="credly-card-link"><i class="ionicons ion-ribbon-b"></i> Verify on Credly</a>
+                        </div>
+                    </div>
+
+                    <!-- 8. Develop Your Google Cloud Network -->
+                    <div class="credly-card">
+                        <img src="https://images.credly.com/images/b126c61c-4781-4f03-9b2b-062963003abf/image.png" alt="Develop Network" class="credly-card-img">
+                        <div class="credly-card-info">
+                            <span class="credly-card-title">Develop Google Cloud Network</span>
+                            <span class="credly-card-issuer"><i class="ionicons ion-checkmark-circled" style="color: #00ff88;"></i> Google Cloud Skill Badge</span>
+                            <a href="https://www.credly.com/org/google-cloud/badge/develop-your-google-cloud-network-skill-badge" target="_blank" rel="noopener noreferrer" class="credly-card-link"><i class="ionicons ion-ribbon-b"></i> Verify on Credly</a>
+                        </div>
+                    </div>
+
+                    <!-- 9. Use Machine Learning APIs on Google Cloud -->
+                    <div class="credly-card">
+                        <img src="https://images.credly.com/images/1d95accd-3e3d-466f-a432-5dceb4998fd1/image.png" alt="ML APIs" class="credly-card-img">
+                        <div class="credly-card-info">
+                            <span class="credly-card-title">Machine Learning APIs</span>
+                            <span class="credly-card-issuer"><i class="ionicons ion-checkmark-circled" style="color: #00ff88;"></i> Google Cloud Skill Badge</span>
+                            <a href="https://www.credly.com/org/google-cloud/badge/use-machine-learning-apis-on-google-cloud-skill-bad" target="_blank" rel="noopener noreferrer" class="credly-card-link"><i class="ionicons ion-ribbon-b"></i> Verify on Credly</a>
+                        </div>
+                    </div>
+
+                    <!-- 10. Derive Insights from BigQuery Data -->
+                    <div class="credly-card">
+                        <img src="https://images.credly.com/images/11088b22-7be5-4fe3-995d-c014514c8dc3/image.png" alt="BigQuery Insights" class="credly-card-img">
+                        <div class="credly-card-info">
+                            <span class="credly-card-title">Derive Insights from BigQuery</span>
+                            <span class="credly-card-issuer"><i class="ionicons ion-checkmark-circled" style="color: #00ff88;"></i> Google Cloud Skill Badge</span>
+                            <a href="https://www.credly.com/org/google-cloud/badge/derive-insights-from-bigquery-data-skill-badge" target="_blank" rel="noopener noreferrer" class="credly-card-link"><i class="ionicons ion-ribbon-b"></i> Verify on Credly</a>
+                        </div>
+                    </div>
+
+                    <!-- 11. Engineer Data for Predictive Modeling with BigQuery ML -->
+                    <div class="credly-card">
+                        <img src="https://images.credly.com/images/6160e2c1-4a95-4f47-8c5b-f2dde7bb6a67/image.png" alt="BigQuery ML" class="credly-card-img">
+                        <div class="credly-card-info">
+                            <span class="credly-card-title">Predictive Modeling with BigQuery ML</span>
+                            <span class="credly-card-issuer"><i class="ionicons ion-checkmark-circled" style="color: #00ff88;"></i> Google Cloud Skill Badge</span>
+                            <a href="https://www.credly.com/org/google-cloud/badge/engineer-data-for-predictive-modeling-with-bigquery" target="_blank" rel="noopener noreferrer" class="credly-card-link"><i class="ionicons ion-ribbon-b"></i> Verify on Credly</a>
+                        </div>
+                    </div>
+
+                    <!-- 12. Set Up an App Dev Environment on Google Cloud -->
+                    <div class="credly-card">
+                        <img src="https://images.credly.com/images/4523fa53-ce20-4180-8774-8d4e5657fe05/image.png" alt="App Dev" class="credly-card-img">
+                        <div class="credly-card-info">
+                            <span class="credly-card-title">App Dev Environment on GCP</span>
+                            <span class="credly-card-issuer"><i class="ionicons ion-checkmark-circled" style="color: #00ff88;"></i> Google Cloud Skill Badge</span>
+                            <a href="https://www.credly.com/org/google-cloud/badge/set-up-an-app-dev-environment-on-google-cloud-skill" target="_blank" rel="noopener noreferrer" class="credly-card-link"><i class="ionicons ion-ribbon-b"></i> Verify on Credly</a>
+                        </div>
+                    </div>
+
+                    <!-- 13. Prepare Data for ML APIs on Google Cloud -->
+                    <div class="credly-card">
+                        <img src="https://images.credly.com/images/68756311-9319-4eeb-a2b7-76defc8dd8a2/image.png" alt="Prepare ML Data" class="credly-card-img">
+                        <div class="credly-card-info">
+                            <span class="credly-card-title">Prepare Data for ML APIs</span>
+                            <span class="credly-card-issuer"><i class="ionicons ion-checkmark-circled" style="color: #00ff88;"></i> Google Cloud Skill Badge</span>
+                            <a href="https://www.credly.com/org/google-cloud/badge/prepare-data-for-ml-apis-on-google-cloud-skill-badg" target="_blank" rel="noopener noreferrer" class="credly-card-link"><i class="ionicons ion-ribbon-b"></i> Verify on Credly</a>
+                        </div>
+                    </div>
+
+                    <!-- 14. AWS Partner: Sales Accredited -->
+                    <div class="credly-card">
+                        <img src="https://images.credly.com/images/46ea4542-72a8-46a1-8d68-b72c4ca50820/blob" alt="AWS Sales" class="credly-card-img">
+                        <div class="credly-card-info">
+                            <span class="credly-card-title">AWS Partner: Sales Accredited</span>
+                            <span class="credly-card-issuer"><i class="ionicons ion-checkmark-circled" style="color: #00ff88;"></i> AWS Partner Network</span>
+                            <a href="https://www.credly.com/org/amazon-web-services/badge/aws-partner-sales-accredited-training-badge" target="_blank" rel="noopener noreferrer" class="credly-card-link"><i class="ionicons ion-ribbon-b"></i> Verify on Credly</a>
+                        </div>
+                    </div>
+
+                    <!-- 15. AWS Educate Introduction to Cloud 101 -->
+                    <div class="credly-card">
+                        <img src="https://images.credly.com/images/e51a8579-188d-4363-8ed1-12ad164ef57b/blob" alt="AWS Cloud 101" class="credly-card-img">
+                        <div class="credly-card-info">
+                            <span class="credly-card-title">AWS Educate Cloud 101</span>
+                            <span class="credly-card-issuer"><i class="ionicons ion-checkmark-circled" style="color: #00ff88;"></i> AWS Training and Certification</span>
+                            <a href="https://www.credly.com/org/amazon-web-services/badge/aws-educate-introduction-to-cloud-101-training-badg" target="_blank" rel="noopener noreferrer" class="credly-card-link"><i class="ionicons ion-ribbon-b"></i> Verify on Credly</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-cta-group">
+                    <a href="https://www.credly.com/users/ashnil-naik.b57d135a/badges" target="_blank" rel="noopener noreferrer" class="btn-cta-primary" style="background: #ff6b00;"><img src="img/credly.svg" style="width: 16px; vertical-align: middle;"> View All on Credly.com</a>
+                    <a href="https://tidycal.com/ashnilnaik777" target="_blank" rel="noopener noreferrer" class="btn-cta-primary" style="background: #1569ee;"><img src="img/tidycal.svg" style="width: 16px; vertical-align: middle;"> Schedule on TidyCal</a>
+                    <a href="https://wa.me/918275024922" target="_blank" rel="noopener noreferrer" class="btn-cta-secondary"><i class="ionicons ion-social-whatsapp"></i> Chat on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
         <div class="app about" id="about">
             <div class="title">
                 <p>About Windows Web</p>

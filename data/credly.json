@@ -1,0 +1,137 @@
+[
+  {
+    "id": "27fc9eeb-0725-4c17-893a-240adf03d394",
+    "name": "Use Machine Learning APIs on Google Cloud Skill Badge",
+    "issuer": "issued by Google Cloud",
+    "date": "2024-05-14",
+    "image": "https://images.credly.com/images/1d95accd-3e3d-466f-a432-5dceb4998fd1/image.png",
+    "url": "https://www.credly.com/org/google-cloud/badge/use-machine-learning-apis-on-google-cloud-skill-bad",
+    "verify_url": "https://www.credly.com/users/ashnil-naik.b57d135a/badges"
+  },
+  {
+    "id": "b4997f33-d1aa-45a4-859e-cb0424b36d8e",
+    "name": "Build a Secure Google Cloud Network Skill Badge",
+    "issuer": "issued by Google Cloud",
+    "date": "2024-04-29",
+    "image": "https://images.credly.com/images/e1131ae3-4a52-4af1-9801-b7853767cf79/image.png",
+    "url": "https://www.credly.com/org/google-cloud/badge/build-a-secure-google-cloud-network-skill-badge",
+    "verify_url": "https://www.credly.com/users/ashnil-naik.b57d135a/badges"
+  },
+  {
+    "id": "48ace0d1-8e4b-4c5b-b989-86f01b36975b",
+    "name": "Deploy Kubernetes Applications on Google Cloud Skill Badge",
+    "issuer": "issued by Google Cloud",
+    "date": "2024-04-29",
+    "image": "https://images.credly.com/images/f0388a0c-130f-47cd-8750-d6357e907e58/image.png",
+    "url": "https://www.credly.com/org/google-cloud/badge/deploy-kubernetes-applications-on-google-cloud-skil",
+    "verify_url": "https://www.credly.com/users/ashnil-naik.b57d135a/badges"
+  },
+  {
+    "id": "9957baec-a2ce-4260-8672-384ffd69d743",
+    "name": "Derive Insights from BigQuery Data Skill Badge",
+    "issuer": "issued by Google Cloud",
+    "date": "2024-04-29",
+    "image": "https://images.credly.com/images/11088b22-7be5-4fe3-995d-c014514c8dc3/image.png",
+    "url": "https://www.credly.com/org/google-cloud/badge/derive-insights-from-bigquery-data-skill-badge",
+    "verify_url": "https://www.credly.com/users/ashnil-naik.b57d135a/badges"
+  },
+  {
+    "id": "2f796525-86af-431d-853c-0b901609653c",
+    "name": "Develop Your Google Cloud Network Skill Badge",
+    "issuer": "issued by Google Cloud",
+    "date": "2024-04-29",
+    "image": "https://images.credly.com/images/b126c61c-4781-4f03-9b2b-062963003abf/image.png",
+    "url": "https://www.credly.com/org/google-cloud/badge/develop-your-google-cloud-network-skill-badge",
+    "verify_url": "https://www.credly.com/users/ashnil-naik.b57d135a/badges"
+  },
+  {
+    "id": "2de2736c-9252-47e3-81ad-82cfc37a1846",
+    "name": "Implement Load Balancing on Compute Engine Skill Badge",
+    "issuer": "issued by Google Cloud",
+    "date": "2024-04-29",
+    "image": "https://images.credly.com/images/eea11cba-2a98-4bbe-bad2-447878dd34a2/image.png",
+    "url": "https://www.credly.com/org/google-cloud/badge/implement-load-balancing-on-compute-engine-skill-ba",
+    "verify_url": "https://www.credly.com/users/ashnil-naik.b57d135a/badges"
+  },
+  {
+    "id": "0ee8b60a-f304-4e24-93da-270e840fd5ea",
+    "name": "Prepare Data for ML APIs on Google Cloud Skill Badge",
+    "issuer": "issued by Google Cloud",
+    "date": "2024-04-29",
+    "image": "https://images.credly.com/images/68756311-9319-4eeb-a2b7-76defc8dd8a2/image.png",
+    "url": "https://www.credly.com/org/google-cloud/badge/prepare-data-for-ml-apis-on-google-cloud-skill-badg",
+    "verify_url": "https://www.credly.com/users/ashnil-naik.b57d135a/badges"
+  },
+  {
+    "id": "68e139fa-b346-4184-825e-6d9c8f8a75d3",
+    "name": "Engineer Data for Predictive Modeling with BigQuery ML Skill Badge",
+    "issuer": "issued by Google Cloud",
+    "date": "2024-04-04",
+    "image": "https://images.credly.com/images/6160e2c1-4a95-4f47-8c5b-f2dde7bb6a67/image.png",
+    "url": "https://www.credly.com/org/google-cloud/badge/engineer-data-for-predictive-modeling-with-bigquery",
+    "verify_url": "https://www.credly.com/users/ashnil-naik.b57d135a/badges"
+  },
+  {
+    "id": "f9408afe-6546-4329-884c-44b9fbe3c8c3",
+    "name": "Implement DevOps Workflows in Google Cloud Skill Badge",
+    "issuer": "issued by Google Cloud",
+    "date": "2024-04-04",
+    "image": "https://images.credly.com/images/7514501c-47e3-4766-a833-2f45eacdf615/image.png",
+    "url": "https://www.credly.com/org/google-cloud/badge/implement-devops-workflows-in-google-cloud-skill-ba",
+    "verify_url": "https://www.credly.com/users/ashnil-naik.b57d135a/badges"
+  },
+  {
+    "id": "965e49dc-aa0a-4688-a149-9659f83658f9",
+    "name": "Set Up an App Dev Environment on Google Cloud Skill Badge",
+    "issuer": "issued by Google Cloud",
+    "date": "2024-04-04",
+    "image": "https://images.credly.com/images/42326d44-14ff-4eda-b9c5-7d8f12919253/image.png",
+    "url": "https://www.credly.com/org/google-cloud/badge/set-up-an-app-dev-environment-on-google-cloud-skill",
+    "verify_url": "https://www.credly.com/users/ashnil-naik.b57d135a/badges"
+  },
+  {
+    "id": "4a5ed026-4126-41fc-a568-dc5948f38b80",
+    "name": "AWS Educate Introduction to Cloud 101 - Training Badge",
+    "issuer": "issued by Amazon Web Services Training and Certification",
+    "date": "2023-08-26",
+    "image": "https://images.credly.com/images/e51a8579-188d-4363-8ed1-12ad164ef57b/blob",
+    "url": "https://www.credly.com/org/amazon-web-services/badge/aws-educate-introduction-to-cloud-101-training-badg",
+    "verify_url": "https://www.credly.com/users/ashnil-naik.b57d135a/badges"
+  },
+  {
+    "id": "eeb2fdb8-bbd6-4e2d-a89a-9f0adb6d4ef3",
+    "name": "AWS Partner: Technical Accredited - Training Badge",
+    "issuer": "issued by Amazon Web Services Training and Certification",
+    "date": "2023-02-17",
+    "image": "https://images.credly.com/images/8f006312-3154-45bf-a845-4a043641e83c/blob",
+    "url": "https://www.credly.com/org/amazon-web-services/badge/aws-partner-technical-accredited-training-badge",
+    "verify_url": "https://www.credly.com/users/ashnil-naik.b57d135a/badges"
+  },
+  {
+    "id": "b10d4231-1758-465b-a13e-523b77c074cb",
+    "name": "AWS Partner: Cloud Economics Essentials - Training Badge",
+    "issuer": "issued by Amazon Web Services Training and Certification",
+    "date": "2023-02-16",
+    "image": "https://images.credly.com/images/1ba189ae-4afb-4c3b-ae89-f3da3c054f05/blob",
+    "url": "https://www.credly.com/org/amazon-web-services/badge/aws-partner-cloud-economics-essentials-training-bad",
+    "verify_url": "https://www.credly.com/users/ashnil-naik.b57d135a/badges"
+  },
+  {
+    "id": "799f8182-5fcd-4c44-81af-87a4ade06a28",
+    "name": "AWS Partner: Sales Accredited - Training Badge",
+    "issuer": "issued by Amazon Web Services Training and Certification",
+    "date": "2023-02-16",
+    "image": "https://images.credly.com/images/46ea4542-72a8-46a1-8d68-b72c4ca50820/blob",
+    "url": "https://www.credly.com/org/amazon-web-services/badge/aws-partner-sales-accredited-training-badge",
+    "verify_url": "https://www.credly.com/users/ashnil-naik.b57d135a/badges"
+  },
+  {
+    "id": "74e9dd88-20d0-46c6-92ca-114a844abd8e",
+    "name": "AWS Certified Cloud Practitioner",
+    "issuer": "issued by Amazon Web Services Training and Certification",
+    "date": "2023-03-22",
+    "image": "https://images.credly.com/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png",
+    "url": "https://www.credly.com/org/amazon-web-services/badge/aws-certified-cloud-practitioner",
+    "verify_url": "https://www.credly.com/users/ashnil-naik.b57d135a/badges"
+  }
+]

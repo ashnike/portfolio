@@ -26,6 +26,8 @@ class DynamicPortfolioHandler(SimpleHTTPRequestHandler):
             self.handle_api_youtube()
         elif clean_path == '/api/blogs':
             self.handle_api_blogs()
+        elif clean_path == '/api/credly':
+            self.handle_api_credly()
         elif clean_path == '/api/sync':
             self.handle_api_sync()
         else:
@@ -83,6 +85,18 @@ class DynamicPortfolioHandler(SimpleHTTPRequestHandler):
                 self.send_json_response(data)
             else:
                 self.send_json_response([], 500)
+        except Exception as e:
+            self.send_json_response({"error": str(e)}, 500)
+
+    def handle_api_credly(self):
+        cache_file = os.path.join(ROOT_DIR, 'data', 'credly.json')
+        try:
+            if os.path.exists(cache_file):
+                with open(cache_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                self.send_json_response(data)
+                return
+            self.send_json_response([], 404)
         except Exception as e:
             self.send_json_response({"error": str(e)}, 500)
 
