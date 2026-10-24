@@ -29,6 +29,7 @@
         <script src="js/jquery-ui.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js" type="text/javascript"></script>
         <script src="js/script.js" type="text/javascript"></script>
+        <script src="js/feeds.js" type="text/javascript"></script>
     </head>
     <body>        
         <!-- BOOT -->
@@ -128,65 +129,180 @@
             </div>
             <div class="metro-ui">
 
-                <ul class="metro-ui-grid grid-1">
-                    <li class="brand aboutme-tile ui-sortable-handle"><a href="profile/"><img src="profile-pic.jpeg" alt="Profile"><span class="text">About Me</span></a></li>
-                    <script class="ui-sortable-handle" style="">
-                        document.addEventListener("DOMContentLoaded", function() {
-                            var tile = document.querySelector('.aboutme-tile');
-                            if (tile) {
-                                tile.addEventListener('click', function(e) {
-                                    e.preventDefault();
-                                    window.location.href = 'profile/index.html';
-                                });
-                            }
-                        });
-                    </script>
-                    <li class="teal ui-sortable-handle"><i class="ionicons ion-email"></i><span class="text">Mail</span></li>
-                    <li class="indigo ui-sortable-handle"><i class="ionicons ion-calendar"></i><span class="text">Calendar</span></li>
-                    <li class="small lighterBlue ui-sortable-handle"><i class="ionicons ion-social-skype"></i><span class="text">Skype</span></li>
-                    <li class="small emerald ui-sortable-handle"><i class="ionicons ion-android-playstore"></i><span class="text">Store</span></li>
-                    <li class="orange ui-sortable-handle"><i class="ionicons ion-android-contacts"></i><span class="text">People</span></li>
-                    <li class="darkIndigo ui-sortable-handle"><i class="ionicons ion-image"></i><span class="text">Photos</span></li>
-                    <li class="darkBlue ui-sortable-handle"><i class="ionicons ion-gear-a"></i><span class="text">Settings</span></li>
-                </ul>
-                <ul class="metro-ui-grid grid-2">
-                    <li class="amber"><i class="ionicons ion-ios-partlysunny"></i><span class="text">Weather</span></li>
-                    <li class="small darkViolet"><i class="ionicons ion-android-map"></i><span class="text">Maps</span></li>
-                    <li class="small darkCyan"><i class="ionicons ion-cloud"></i><span class="text">OneDrive</span></li>
-                    <li class="violet"><i class="ionicons ion-chatbox-working"></i><span class="text">Messaging</span></li>
-                    <li class="green"><i class="ionicons ion-arrow-graph-up-right"></i><span class="text">Finance</span></li>
-                    <li class="magenta"><i class="ionicons ion-ios-basketball"></i><span class="text">Sports</span></li>
-                    <li class="red"><i class="ionicons ion-ios-pulse"></i><span class="text">Health</span></li>
-                    <li class="pink"><i class="ionicons ion-search"></i><span class="text">Bing</span></li>
-                    <li class="teal"><i class="ionicons ion-bag"></i><span class="text">Travel</span></li>
-                    <li class="small emerald"><i class="ionicons ion-ios-game-controller-b"></i><span class="text">Games</span></li>
-                    <li class="small violet"><i class="ionicons ion-camera"></i><span class="text">Camera</span></li>
-                    <li class="small orange"><i class="ionicons ion-headphone"></i><span class="text">Music</span></li>
-                    <li class="small crimson"><i class="ionicons ion-social-youtube-outline"></i><span class="text">Video</span></li>
-                    <li class="darkCobalt"><i class="ionicons ion-image"></i><span class="text">Photos</span></li>
-                    <li class="small darkTeal"><i class="ionicons ion-calculator"></i><span class="text">Calculator</span></li>
-                    <li class="small amber"><i class="ionicons ion-ios-compose"></i><span class="text">Notes</span></li>
-                    <li class="small crimson"><i class="ionicons ion-ios-book"></i><span class="text">Reader</span></li>
-                    <li class="small teal"><i class="ionicons ion-ios-musical-notes"></i><span class="text">Xbox Music</span></li>
-                    <li class="darkIndigo"><i class="ionicons ion-ios-film"></i><span class="text">Movies</span></li>
-                </ul>
-                <ul class="metro-ui-grid grid-3">
-                    <li class="orange"><i class="ionicons ion-social-html5"></i><span class="text">HTML5</span></li>
-                    <li class="blue"><i class="ionicons ion-social-css3"></i><span class="text">CSS3</span></li>
-                    <li class="magenta"><i class="ionicons ion-social-sass"></i><span class="text">SASS/SCSS</span></li>
-                    <li class="red"><i class="ionicons ion-ios-infinite"></i><span class="text">normalize.css</span></li>
-                    <li class="violet"><i class="ionicons ion-social-javascript"></i><span class="text">JS/jQuery/jQuery UI</span></li>
-                    <li class="darkTeal"><i class="ionicons ion-android-apps"></i><span class="text">Ionicons</span></li>
-                    <li class="darkBlue"><img src="img/brackets.png" style="width: 12vh; height: 12vh; display: inline-block;"><span class="text">Adobe Brackets</span></li>
-                    <li class="green"><i class="ionicons ion-android-share-alt"></i><span class="text">Share</span></li>
-                    <li class="teal"><i class="ionicons ion-code"></i><span class="text">Code</span></li>
-                    <li class="gray"><i class="ionicons ion-wrench"></i><span class="text">Front-End Tools</span></li>
-                    <li class="amber"><i class="ionicons ion-coffee"></i><span class="text">Coffee</span></li>
-                    <li class="loveRed"><i class="ionicons ion-android-favorite"></i><span class="text">Love</span></li>
-                    <li class="small darkCyan"><i class="ionicons ion-ios-folder"></i><span class="text">Explorer</span></li>
-                    <li class="small gray"><i class="ionicons ion-ios-trash"></i><span class="text">Recycle Bin</span></li>
-                    <li class="darkCobalt"><i class="ionicons ion-monitor"></i><span class="text">Desktop</span></li>
-                </ul>
+                <div class="metro-group">
+                    <div class="group-header">
+                        <h2 class="group-title">Personal</h2>
+                    </div>
+                    <ul class="metro-ui-grid grid-1">
+                        <li class="brand aboutme-tile ui-sortable-handle"><a href="profile/"><img src="profile-pic.jpeg" alt="Profile"><span class="text">About Me</span></a></li>
+                        <script class="ui-sortable-handle" style="">
+                            document.addEventListener("DOMContentLoaded", function() {
+                                var tile = document.querySelector('.aboutme-tile');
+                                if (tile) {
+                                    tile.addEventListener('click', function(e) {
+                                        e.preventDefault();
+                                        window.location.href = 'profile/index.html';
+                                    });
+                                }
+                            });
+                        </script>
+                        <li class="teal ui-sortable-handle"><i class="ionicons ion-email"></i><span class="text">Mail</span></li>
+                        <li class="indigo ui-sortable-handle"><i class="ionicons ion-calendar"></i><span class="text">Calendar</span></li>
+                        <li class="small lighterBlue ui-sortable-handle"><i class="ionicons ion-social-skype"></i><span class="text">Skype</span></li>
+                        <li class="small emerald ui-sortable-handle"><i class="ionicons ion-android-playstore"></i><span class="text">Store</span></li>
+                        <li class="orange ui-sortable-handle"><i class="ionicons ion-android-contacts"></i><span class="text">People</span></li>
+                        <li class="darkIndigo ui-sortable-handle"><i class="ionicons ion-image"></i><span class="text">Photos</span></li>
+                        <li class="darkBlue ui-sortable-handle"><i class="ionicons ion-gear-a"></i><span class="text">Settings</span></li>
+                    </ul>
+                </div>
+
+                <div class="metro-group">
+                    <div class="group-header">
+                        <h2 class="group-title">PinakaOps &bull; YouTube</h2>
+                        <a href="https://www.youtube.com/@pinakaops" target="_blank" rel="noopener noreferrer" class="group-link" title="Open YouTube Channel"><i class="ionicons ion-social-youtube"></i> Channel</a>
+                    </div>
+                    <ul class="metro-ui-grid grid-youtube">
+                        <!-- LATEST VIDEO 1 (Hero Tile) -->
+                        <li class="live-feed-tile youtube-feed-tile tile-hero" data-url="https://www.youtube.com/watch?v=c9e2zisXnWQ">
+                            <a href="https://www.youtube.com/watch?v=c9e2zisXnWQ" target="_blank" rel="noopener noreferrer" class="tile-link">
+                                <div class="tile-bg" style="background-image: url('https://i.ytimg.com/vi/c9e2zisXnWQ/hqdefault.jpg');"></div>
+                                <div class="tile-overlay"></div>
+                                <span class="tile-badge"><i class="ionicons ion-social-youtube"></i> YouTube</span>
+                                <span class="tile-live-indicator">Latest</span>
+                                <div class="yt-play-icon"><i class="ionicons ion-play"></i></div>
+                                <div class="tile-content">
+                                    <h4 class="tile-title">Set static IP to Devices in DHCP | TPLiNK | Dlink</h4>
+                                    <span class="tile-date"><i class="ionicons ion-ios-videocam"></i> Latest Upload</span>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- LATEST VIDEO 2 (Wide Tile) -->
+                        <li class="live-feed-tile youtube-feed-tile tile-wide" data-url="https://www.youtube.com/watch?v=Ib4rY0mWX0I">
+                            <a href="https://www.youtube.com/watch?v=Ib4rY0mWX0I" target="_blank" rel="noopener noreferrer" class="tile-link">
+                                <div class="tile-bg" style="background-image: url('https://i.ytimg.com/vi/Ib4rY0mWX0I/hqdefault.jpg');"></div>
+                                <div class="tile-overlay"></div>
+                                <span class="tile-badge"><i class="ionicons ion-social-youtube"></i> YouTube</span>
+                                <div class="yt-play-icon"><i class="ionicons ion-play"></i></div>
+                                <div class="tile-content">
+                                    <h4 class="tile-title">Auto start/stop Instances using AWS Lambda Functions | Lambda | SNS | SLACK</h4>
+                                    <span class="tile-date"><i class="ionicons ion-ios-videocam"></i> Recent Video</span>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- LATEST VIDEO 3 (Wide Tile) -->
+                        <li class="live-feed-tile youtube-feed-tile tile-wide" data-url="https://www.youtube.com/watch?v=5lqATNRSOJY">
+                            <a href="https://www.youtube.com/watch?v=5lqATNRSOJY" target="_blank" rel="noopener noreferrer" class="tile-link">
+                                <div class="tile-bg" style="background-image: url('https://i.ytimg.com/vi/5lqATNRSOJY/hqdefault.jpg');"></div>
+                                <div class="tile-overlay"></div>
+                                <span class="tile-badge"><i class="ionicons ion-social-youtube"></i> YouTube</span>
+                                <div class="yt-play-icon"><i class="ionicons ion-play"></i></div>
+                                <div class="tile-content">
+                                    <h4 class="tile-title">MobaXterm installation on Ubuntu 22.04 | Tutorial</h4>
+                                    <span class="tile-date"><i class="ionicons ion-ios-videocam"></i> Recent Video</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="metro-group">
+                    <div class="group-header">
+                        <h2 class="group-title">DevOps TryHard &bull; Blog</h2>
+                        <a href="https://devopstryhard.com/" target="_blank" rel="noopener noreferrer" class="group-link" title="Open DevOps TryHard Site"><i class="ionicons ion-android-open"></i> Site</a>
+                    </div>
+                    <ul class="metro-ui-grid grid-blog">
+                        <!-- LATEST BLOG 1 (Hero Tile) -->
+                        <li class="live-feed-tile blog-feed-tile tile-hero" data-url="https://devopstryhard.com/the-sunday-my-worker-node-taught-me-kubernetes-scheduling/">
+                            <a href="https://devopstryhard.com/the-sunday-my-worker-node-taught-me-kubernetes-scheduling/" target="_blank" rel="noopener noreferrer" class="tile-link">
+                                <div class="tile-bg" style="background-image: url('https://devopstryhard.com/wp-content/uploads/2026/09/f49daa82-c738-4468-b711-38ca5c5dd2f6.png');"></div>
+                                <div class="tile-overlay"></div>
+                                <span class="tile-badge"><i class="ionicons ion-document-text"></i> DevOpsTryHard</span>
+                                <span class="tile-live-indicator">Latest</span>
+                                <div class="blog-read-icon"><i class="ionicons ion-ios-paper-outline"></i></div>
+                                <div class="tile-content">
+                                    <h4 class="tile-title">This Sunday my worker node taught me Kubernetes scheduling</h4>
+                                    <span class="tile-date"><i class="ionicons ion-calendar"></i> Sep 6, 2026</span>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- LATEST BLOG 2 (Wide Tile) -->
+                        <li class="live-feed-tile blog-feed-tile tile-wide" data-url="https://devopstryhard.com/building-a-low-cost-nat-architecture-on-aws-with-fck-nat/">
+                            <a href="https://devopstryhard.com/building-a-low-cost-nat-architecture-on-aws-with-fck-nat/" target="_blank" rel="noopener noreferrer" class="tile-link">
+                                <div class="tile-bg" style="background-image: url('https://devopstryhard.com/wp-content/uploads/2026/08/ChatGPT-Image-Aug-16-2026-11_12_50-AM.png');"></div>
+                                <div class="tile-overlay"></div>
+                                <span class="tile-badge"><i class="ionicons ion-document-text"></i> Blog</span>
+                                <div class="blog-read-icon"><i class="ionicons ion-ios-paper-outline"></i></div>
+                                <div class="tile-content">
+                                    <h4 class="tile-title">Building a Low-Cost NAT Architecture on AWS with fck-nat</h4>
+                                    <span class="tile-date"><i class="ionicons ion-calendar"></i> Aug 16, 2026</span>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- LATEST BLOG 3 (Wide Tile) -->
+                        <li class="live-feed-tile blog-feed-tile tile-wide" data-url="https://devopstryhard.com/kubernetes-at-home/">
+                            <a href="https://devopstryhard.com/kubernetes-at-home/" target="_blank" rel="noopener noreferrer" class="tile-link">
+                                <div class="tile-bg" style="background-image: url('https://devopstryhard.com/wp-content/uploads/2025/06/Master-e1749604443711.png');"></div>
+                                <div class="tile-overlay"></div>
+                                <span class="tile-badge"><i class="ionicons ion-document-text"></i> Blog</span>
+                                <div class="blog-read-icon"><i class="ionicons ion-ios-paper-outline"></i></div>
+                                <div class="tile-content">
+                                    <h4 class="tile-title">Kubernetes at Home</h4>
+                                    <span class="tile-date"><i class="ionicons ion-calendar"></i> Jun 11, 2025</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="metro-group">
+                    <div class="group-header">
+                        <h2 class="group-title">Windows Apps</h2>
+                    </div>
+                    <ul class="metro-ui-grid grid-2">
+                        <li class="amber"><i class="ionicons ion-ios-partlysunny"></i><span class="text">Weather</span></li>
+                        <li class="small darkViolet"><i class="ionicons ion-android-map"></i><span class="text">Maps</span></li>
+                        <li class="small darkCyan"><i class="ionicons ion-cloud"></i><span class="text">OneDrive</span></li>
+                        <li class="violet"><i class="ionicons ion-chatbox-working"></i><span class="text">Messaging</span></li>
+                        <li class="green"><i class="ionicons ion-arrow-graph-up-right"></i><span class="text">Finance</span></li>
+                        <li class="magenta"><i class="ionicons ion-ios-basketball"></i><span class="text">Sports</span></li>
+                        <li class="red"><i class="ionicons ion-ios-pulse"></i><span class="text">Health</span></li>
+                        <li class="pink"><i class="ionicons ion-search"></i><span class="text">Bing</span></li>
+                        <li class="teal"><i class="ionicons ion-bag"></i><span class="text">Travel</span></li>
+                        <li class="small emerald"><i class="ionicons ion-ios-game-controller-b"></i><span class="text">Games</span></li>
+                        <li class="small violet"><i class="ionicons ion-camera"></i><span class="text">Camera</span></li>
+                        <li class="small orange"><i class="ionicons ion-headphone"></i><span class="text">Music</span></li>
+                        <li class="small crimson"><i class="ionicons ion-social-youtube-outline"></i><span class="text">Video</span></li>
+                        <li class="darkCobalt"><i class="ionicons ion-image"></i><span class="text">Photos</span></li>
+                        <li class="small darkTeal"><i class="ionicons ion-calculator"></i><span class="text">Calculator</span></li>
+                        <li class="small amber"><i class="ionicons ion-ios-compose"></i><span class="text">Notes</span></li>
+                        <li class="small crimson"><i class="ionicons ion-ios-book"></i><span class="text">Reader</span></li>
+                        <li class="small teal"><i class="ionicons ion-ios-musical-notes"></i><span class="text">Xbox Music</span></li>
+                        <li class="darkIndigo"><i class="ionicons ion-ios-film"></i><span class="text">Movies</span></li>
+                    </ul>
+                </div>
+
+                <div class="metro-group">
+                    <div class="group-header">
+                        <h2 class="group-title">Tools &amp; Skills</h2>
+                    </div>
+                    <ul class="metro-ui-grid grid-3">
+                        <li class="orange"><i class="ionicons ion-social-html5"></i><span class="text">HTML5</span></li>
+                        <li class="blue"><i class="ionicons ion-social-css3"></i><span class="text">CSS3</span></li>
+                        <li class="magenta"><i class="ionicons ion-social-sass"></i><span class="text">SASS/SCSS</span></li>
+                        <li class="red"><i class="ionicons ion-ios-infinite"></i><span class="text">normalize.css</span></li>
+                        <li class="violet"><i class="ionicons ion-social-javascript"></i><span class="text">JS/jQuery/jQuery UI</span></li>
+                        <li class="darkTeal"><i class="ionicons ion-android-apps"></i><span class="text">Ionicons</span></li>
+                        <li class="darkBlue"><img src="img/brackets.png" style="width: 12vh; height: 12vh; display: inline-block;"><span class="text">Adobe Brackets</span></li>
+                        <li class="green"><i class="ionicons ion-android-share-alt"></i><span class="text">Share</span></li>
+                        <li class="teal"><i class="ionicons ion-code"></i><span class="text">Code</span></li>
+                        <li class="gray"><i class="ionicons ion-wrench"></i><span class="text">Front-End Tools</span></li>
+                        <li class="amber"><i class="ionicons ion-coffee"></i><span class="text">Coffee</span></li>
+                        <li class="loveRed"><i class="ionicons ion-android-favorite"></i><span class="text">Love</span></li>
+                        <li class="small darkCyan"><i class="ionicons ion-ios-folder"></i><span class="text">Explorer</span></li>
+                        <li class="small gray"><i class="ionicons ion-ios-trash"></i><span class="text">Recycle Bin</span></li>
+                        <li class="darkCobalt"><i class="ionicons ion-monitor"></i><span class="text">Desktop</span></li>
+                    </ul>
+                </div>
             </div>
             <div class="desktop-activator"><i class="ionicons ion-social-windows"></i></div>
         </div>

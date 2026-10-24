@@ -115,6 +115,16 @@ $(document).ready(function() {
 
     $('.metro-ui-grid li').click(function(e) {
         var $tile = $(this);
+
+        // Check if dynamic live feed tile or external link tile
+        if ($tile.hasClass('live-feed-tile') || $tile.attr('data-url')) {
+            var url = $tile.attr('data-url') || $tile.find('a.tile-link').attr('href');
+            if (url) {
+                window.open(url, '_blank', 'noopener,noreferrer');
+                return;
+            }
+        }
+
         var tileText = $tile.find('.text').text().trim().toLowerCase();
         console.log('Metro UI Grid Li Clicked - tileText:', tileText);
         

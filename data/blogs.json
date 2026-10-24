@@ -1,0 +1,26 @@
+[
+  {
+    "id": 399,
+    "title": "This Sunday my worker node taught me Kubernetes scheduling",
+    "url": "https://devopstryhard.com/the-sunday-my-worker-node-taught-me-kubernetes-scheduling/",
+    "image": "https://devopstryhard.com/wp-content/uploads/2026/09/f49daa82-c738-4468-b711-38ca5c5dd2f6.png",
+    "date": "2026-09-06",
+    "excerpt": "It's Sunday, September 6th, and I finally sat down to fix something that had been bugging me all week: I have a small worker node in my clus..."
+  },
+  {
+    "id": 352,
+    "title": "Building a Low-Cost NAT Architecture on AWS with fck-nat",
+    "url": "https://devopstryhard.com/building-a-low-cost-nat-architecture-on-aws-with-fck-nat/",
+    "image": "https://devopstryhard.com/wp-content/uploads/2026/08/ChatGPT-Image-Aug-16-2026-11_12_50-AM.png",
+    "date": "2026-08-16",
+    "excerpt": "How I replaced a managed NAT Gateway with lightweight ARM-based EC2 NAT instances, Elastic IPs, ENIs, and AZ-specific routing — while keepin..."
+  },
+  {
+    "id": 329,
+    "title": "Kubernetes at Home",
+    "url": "https://devopstryhard.com/kubernetes-at-home/",
+    "image": "https://devopstryhard.com/wp-content/uploads/2025/06/Master-e1749604443711.png",
+    "date": "2025-06-10",
+    "excerpt": "Introduction Kubernetes is the de facto standard for container orchestration, but running it on a full-scale setup can be overkill, especial..."
+  }
+]
