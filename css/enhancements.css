@@ -1371,4 +1371,183 @@
     color: #ffffff;
 }
 
+/* ====================================================== */
+/* ===== FREELANCE ENHANCEMENTS: AVAILABILITY & APPS ===== */
+/* ====================================================== */
+
+/* Availability Badge in Header */
+.availability-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 255, 136, 0.12);
+    border: 1px solid rgba(0, 255, 136, 0.4);
+    border-radius: 20px;
+    padding: 6px 14px;
+    margin-left: 20px;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+}
+
+.availability-pill:hover {
+    background: rgba(0, 255, 136, 0.22);
+    border-color: #00ff88;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
+}
+
+.status-pulse-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #00ff88;
+    box-shadow: 0 0 10px #00ff88;
+    animation: statusPulse 1.8s infinite ease-in-out;
+    display: inline-block;
+}
+
+@keyframes statusPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.35); opacity: 0.6; }
+}
+
+.availability-text {
+    font-size: 1.35vh;
+    font-weight: 600;
+    color: #00ff88;
+    letter-spacing: 0.3px;
+    font-family: 'Segoe UI', -apple-system, sans-serif;
+}
+
+/* Productized Sprints & Retainer Cards */
+.sprint-card {
+    position: relative;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.sprint-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.sprint-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 1.1vh;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffd43b;
+    border: 1px solid rgba(255, 212, 59, 0.3);
+}
+
+.sprint-outcome {
+    margin: 10px 0;
+    padding: 8px 10px;
+    background: rgba(0, 255, 136, 0.08);
+    border-radius: 4px;
+    font-size: 1.25vh;
+    color: #e0e0e0;
+}
+
+.sprint-outcome i {
+    color: #00ff88;
+    margin-right: 4px;
+}
+
+.btn-sprint {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    padding: 7px 12px;
+    background: rgba(21, 105, 238, 0.25);
+    border: 1px solid rgba(21, 105, 238, 0.6);
+    border-radius: 4px;
+    color: #60cdff;
+    text-decoration: none;
+    font-size: 1.25vh;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-sprint:hover {
+    background: #1569ee;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Cloud Savings Calculator Styles */
+.calc-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    padding: 8px 10px;
+    cursor: pointer;
+    font-size: 1.3vh;
+    color: #e0e0e0;
+    transition: background 0.15s ease;
+}
+
+.calc-checkbox-label:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.calc-checkbox-label input[type="checkbox"] {
+    accent-color: #1ea482;
+    margin-top: 2px;
+}
+
+.calc-result-box {
+    transition: transform 0.2s ease;
+}
+
+.calc-result-box:hover {
+    transform: translateY(-2px);
+}
+
+/* Interactive Terminal Styling */
+.terminal-cmd-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.terminal-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.terminal-container::-webkit-scrollbar-thumb {
+    background: #333333;
+    border-radius: 3px;
+}
+
+.terminal-container::-webkit-scrollbar-thumb:hover {
+    background: #555555;
+}
+
+/* Client Testimonials Rotator */
+.testimonial-rotator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.testimonial-quote {
+    font-style: italic;
+    color: #ffffff;
+}
+
+.testimonial-author {
+    color: #ffd43b !important;
+    font-weight: 600;
+}
+
+
 
