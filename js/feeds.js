@@ -220,83 +220,103 @@
 
     // Fetch YouTube Feed
     function fetchYouTubeVideos() {
-        // 1. Try local server API
-        fetch(CONFIG.localYoutubeApi, { cache: 'no-store' })
-            .then(function(res) {
-                if (!res.ok) throw new Error('Local API unavailable');
-                return res.json();
-            })
-            .then(function(data) {
-                if (data && data.length) {
-                    renderYouTubeTiles(data);
-                } else {
-                    throw new Error('Empty data');
-                }
-            })
-            .catch(function() {
-                // 2. Fallback to static JSON
-                fetch(CONFIG.staticYoutubeData + '?t=' + Date.now())
-                    .then(function(res) { return res.json(); })
-                    .then(function(data) {
+        var isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+        // 1. In local dev, query local server API first
+        if (isLocal) {
+            fetch(CONFIG.localYoutubeApi, { cache: 'no-store' })
+                .then(function(res) {
+                    if (!res.ok) throw new Error('Local API unavailable');
+                    return res.json();
+                })
+                .then(function(data) {
+                    if (data && data.length) {
                         renderYouTubeTiles(data);
-                    })
-                    .catch(function(err) {
-                        console.warn('Could not load YouTube feed from static JSON:', err);
-                    });
+                    } else {
+                        throw new Error('Empty data');
+                    }
+                })
+                .catch(function() {
+                    loadStaticYouTubeData();
+                });
+        } else {
+            // In production (static S3/CloudFront), load static JSON feed directly
+            loadStaticYouTubeData();
+        }
+    }
+
+    function loadStaticYouTubeData() {
+        fetch(CONFIG.staticYoutubeData + '?t=' + Date.now())
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                renderYouTubeTiles(data);
+            })
+            .catch(function(err) {
+                console.warn('Could not load YouTube feed from static JSON:', err);
             });
     }
 
     // Fetch Blog Posts from DevOpsTryHard
     function fetchBlogPosts() {
-        // 1. Try local server API (/api/blogs) or static JSON cache first
-        fetch(CONFIG.localBlogApi, { cache: 'no-store' })
-            .then(function(res) {
-                if (!res.ok) throw new Error('Local API unavailable');
-                return res.json();
-            })
+        var isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+        // 1. In local dev, query local server API first
+        if (isLocal) {
+            fetch(CONFIG.localBlogApi, { cache: 'no-store' })
+                .then(function(res) {
+                    if (!res.ok) throw new Error('Local API unavailable');
+                    return res.json();
+                })
+                .then(function(data) {
+                    if (data && data.length) {
+                        renderBlogTiles(data);
+                    } else {
+                        throw new Error('Empty data');
+                    }
+                })
+                .catch(function() {
+                    loadStaticBlogData();
+                });
+        } else {
+            // In production (static S3/CloudFront), load static JSON cache directly
+            loadStaticBlogData();
+        }
+    }
+
+    function loadStaticBlogData() {
+        fetch(CONFIG.staticBlogData + '?t=' + Date.now())
+            .then(function(res) { return res.json(); })
             .then(function(data) {
                 if (data && data.length) {
                     renderBlogTiles(data);
                 } else {
-                    throw new Error('Empty data');
+                    throw new Error('Empty static cache');
                 }
             })
             .catch(function() {
-                // 2. Fallback to static JSON cache
-                fetch(CONFIG.staticBlogData + '?t=' + Date.now())
-                    .then(function(res) { return res.json(); })
-                    .then(function(data) {
-                        if (data && data.length) {
-                            renderBlogTiles(data);
-                        } else {
-                            throw new Error('Empty static cache');
-                        }
+                // 3. Fallback to direct WordPress REST API (when origin matches)
+                fetch(CONFIG.blogApiUrl)
+                    .then(function(res) {
+                        if (!res.ok) throw new Error('WP API error');
+                        return res.json();
                     })
-                    .catch(function() {
-                        // 3. Fallback to direct WordPress REST API (when origin matches)
-                        fetch(CONFIG.blogApiUrl)
-                            .then(function(res) {
-                                if (!res.ok) throw new Error('WP API error');
-                                return res.json();
-                            })
-                            .then(function(posts) {
-                                if (!posts || !posts.length) return;
-                                var blogs = posts.slice(0, 3).map(function(p) {
-                                    var media = p._embedded && p._embedded['wp:featuredmedia'];
-                                    var imgUrl = (media && media[0] && media[0].source_url) ? media[0].source_url : '';
-                                    return {
-                                        id: p.id,
-                                        title: p.title ? p.title.rendered : '',
-                                        url: p.link || CONFIG.blogSiteUrl,
-                                        image: imgUrl,
-                                        date: p.date
-                                    };
-                                });
-                                renderBlogTiles(blogs);
-                            })
-                            .catch(function(err) {
-                                console.warn('Could not load blog feed:', err);
-                            });
+                    .then(function(posts) {
+                        if (!posts || !posts.length) return;
+                        var blogs = posts.slice(0, 3).map(function(p) {
+                            var media = p._embedded && p._embedded['wp:featuredmedia'];
+                            var imgUrl = (media && media[0] && media[0].source_url) ? media[0].source_url : '';
+                            return {
+                                id: p.id,
+                                title: p.title ? p.title.rendered : '',
+                                url: p.link || CONFIG.blogSiteUrl,
+                                image: imgUrl,
+                                date: p.date
+                            };
+                        });
+                        renderBlogTiles(blogs);
+                    })
+                    .catch(function(err) {
+                        console.warn('Could not load blog feed:', err);
                     });
             });
     }
