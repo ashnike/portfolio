@@ -155,7 +155,7 @@ $(document).ready(function() {
             return;
         }
 
-        if ($tile.hasClass('open-booking') || $tile.hasClass('booking-tile') || $tile.hasClass('resume-tile')) {
+        if ($tile.hasClass('open-booking') || $tile.hasClass('resume-tile')) {
             openApp('#booking-app');
             return;
         }
@@ -174,13 +174,16 @@ $(document).ready(function() {
 
         // 2. Check if dynamic live feed tile or external link tile with a valid destination
         var rawUrl = $tile.attr('data-url') || $tile.find('a.tile-link').attr('href');
-        if (rawUrl && !rawUrl.startsWith('javascript:')) {
-            if (rawUrl.startsWith('mailto:')) {
-                window.location.href = rawUrl;
-            } else {
-                window.open(rawUrl, '_blank', 'noopener,noreferrer');
+        if (rawUrl) {
+            var trimmedUrl = rawUrl.trim().toLowerCase();
+            if (trimmedUrl.startsWith('https://') || trimmedUrl.startsWith('http://') || trimmedUrl.startsWith('mailto:')) {
+                if (trimmedUrl.startsWith('mailto:')) {
+                    window.location.href = rawUrl;
+                } else {
+                    window.open(rawUrl, '_blank', 'noopener,noreferrer');
+                }
+                return;
             }
-            return;
         }
 
         // 3. Fallback tile text handlers

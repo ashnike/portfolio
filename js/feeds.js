@@ -37,6 +37,24 @@
         { name: 'Secure Cloud Network', desc: 'Google Cloud \u2022 Security & VPC', url: 'https://www.credly.com/org/google-cloud/badge/build-a-secure-google-cloud-network-skill-badge' }
     ];
 
+    // Helper: HTML escape special characters to prevent XSS
+    function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
+    // Helper: Validate safe URL protocol
+    function isSafeUrl(url) {
+        if (!url || typeof url !== 'string') return false;
+        var trimmed = url.trim().toLowerCase();
+        return trimmed.startsWith('https://') || trimmed.startsWith('http://') || trimmed.startsWith('mailto:');
+    }
+
     function updateCredlyTile(badge) {
         var $tile = $('.credly-tile');
         if (!$tile.length || !badge) return;
@@ -44,10 +62,12 @@
         $rotator.css({ opacity: 0, transform: 'translateY(5px)' });
         setTimeout(function() {
             var url = badge.url || 'https://www.credly.com/users/ashnil-naik.b57d135a/badges';
-            $tile.attr('data-url', url);
-            $tile.find('a.tile-link').attr('href', url);
-            $tile.find('.credly-badge-title').text(badge.name);
-            $tile.find('.credly-badge-desc').text(badge.desc);
+            if (isSafeUrl(url)) {
+                $tile.attr('data-url', url);
+                $tile.find('a.tile-link').attr('href', url);
+            }
+            $tile.find('.credly-badge-title').text(badge.name || '');
+            $tile.find('.credly-badge-desc').text(badge.desc || '');
             $rotator.css({ opacity: 1, transform: 'translateY(0)' });
         }, 200);
     }
@@ -59,11 +79,13 @@
         $info.css({ opacity: 0, transform: 'translateY(5px)' });
         setTimeout(function() {
             var url = project.url || project.html_url || CONFIG.githubUserUrl;
-            $tile.attr('data-url', url);
-            $tile.find('a.tile-link').attr('href', url);
-            $tile.find('.gh-project-title').text(project.name);
-            var lang = project.lang || project.language || '';
-            var desc = project.desc || project.description || '';
+            if (isSafeUrl(url)) {
+                $tile.attr('data-url', url);
+                $tile.find('a.tile-link').attr('href', url);
+            }
+            $tile.find('.gh-project-title').text(project.name || '');
+            var lang = escapeHtml(project.lang || project.language || '');
+            var desc = escapeHtml(project.desc || project.description || '');
             var subtitle = lang ? ('<i class="ionicons ion-code-working"></i> ' + lang + (desc ? ' &bull; ' + desc : '')) : (desc || 'View Repository');
             $tile.find('.gh-project-desc').html(subtitle);
             $info.css({ opacity: 1, transform: 'translateY(0)' });
@@ -174,16 +196,18 @@
             var img = blog.image || '';
             var date = formatDate(blog.date);
 
-            $tile.attr('data-url', url);
-            $tile.find('a.tile-link').attr('href', url);
+            if (isSafeUrl(url)) {
+                $tile.attr('data-url', url);
+                $tile.find('a.tile-link').attr('href', url);
+            }
 
-            if (img) {
-                $tile.find('.tile-bg').css('background-image', 'url("' + img + '")').show();
+            if (img && isSafeUrl(img)) {
+                $tile.find('.tile-bg').css('background-image', 'url("' + encodeURI(img) + '")').show();
             }
 
             $tile.find('.tile-title').text(title).attr('title', title);
             if (date) {
-                $tile.find('.tile-date').html('<i class="ionicons ion-calendar"></i> ' + date);
+                $tile.find('.tile-date').html('<i class="ionicons ion-calendar"></i> ' + escapeHtml(date));
             }
 
             $tile.addClass('feed-loaded');
@@ -224,43 +248,54 @@
 
     // Fetch Blog Posts from DevOpsTryHard
     function fetchBlogPosts() {
-        // 1. Try direct WordPress REST API (has native CORS)
-        fetch(CONFIG.blogApiUrl)
+        // 1. Try local server API (/api/blogs) or static JSON cache first
+        fetch(CONFIG.localBlogApi, { cache: 'no-store' })
             .then(function(res) {
-                if (!res.ok) throw new Error('WP API error');
+                if (!res.ok) throw new Error('Local API unavailable');
                 return res.json();
             })
-            .then(function(posts) {
-                if (!posts || !posts.length) throw new Error('No posts returned');
-                var blogs = posts.slice(0, 3).map(function(p) {
-                    var media = p._embedded && p._embedded['wp:featuredmedia'];
-                    var imgUrl = (media && media[0] && media[0].source_url) ? media[0].source_url : '';
-                    return {
-                        id: p.id,
-                        title: p.title ? p.title.rendered : '',
-                        url: p.link || CONFIG.blogSiteUrl,
-                        image: imgUrl,
-                        date: p.date
-                    };
-                });
-                renderBlogTiles(blogs);
+            .then(function(data) {
+                if (data && data.length) {
+                    renderBlogTiles(data);
+                } else {
+                    throw new Error('Empty data');
+                }
             })
-            .catch(function(err) {
-                console.log('Direct WP API failed, trying fallback...', err);
-                // 2. Fallback to local server API or static JSON
-                fetch(CONFIG.localBlogApi)
+            .catch(function() {
+                // 2. Fallback to static JSON cache
+                fetch(CONFIG.staticBlogData + '?t=' + Date.now())
                     .then(function(res) { return res.json(); })
                     .then(function(data) {
-                        renderBlogTiles(data);
+                        if (data && data.length) {
+                            renderBlogTiles(data);
+                        } else {
+                            throw new Error('Empty static cache');
+                        }
                     })
                     .catch(function() {
-                        fetch(CONFIG.staticBlogData + '?t=' + Date.now())
-                            .then(function(res) { return res.json(); })
-                            .then(function(data) {
-                                renderBlogTiles(data);
+                        // 3. Fallback to direct WordPress REST API (when origin matches)
+                        fetch(CONFIG.blogApiUrl)
+                            .then(function(res) {
+                                if (!res.ok) throw new Error('WP API error');
+                                return res.json();
                             })
-                            .catch(function(err2) {
-                                console.warn('Could not load blog feed:', err2);
+                            .then(function(posts) {
+                                if (!posts || !posts.length) return;
+                                var blogs = posts.slice(0, 3).map(function(p) {
+                                    var media = p._embedded && p._embedded['wp:featuredmedia'];
+                                    var imgUrl = (media && media[0] && media[0].source_url) ? media[0].source_url : '';
+                                    return {
+                                        id: p.id,
+                                        title: p.title ? p.title.rendered : '',
+                                        url: p.link || CONFIG.blogSiteUrl,
+                                        image: imgUrl,
+                                        date: p.date
+                                    };
+                                });
+                                renderBlogTiles(blogs);
+                            })
+                            .catch(function(err) {
+                                console.warn('Could not load blog feed:', err);
                             });
                     });
             });
@@ -306,11 +341,11 @@
         }, 3500);
 
         // Handle tile clicks for dynamic feed tiles & social contact tiles
-        $(document).on('click', '.youtube-feed-tile, .blog-feed-tile, .github-tile, .whatsapp-tile, .email-tile, .linkedin-tile, .aws-cert-tile, .gcp-k8s-tile, .aws-partner-tile', function(e) {
+        $(document).on('click', '.youtube-feed-tile, .blog-feed-tile, .github-tile, .whatsapp-tile, .email-tile, .linkedin-tile, .aws-cert-tile, .gcp-k8s-tile, .aws-partner-tile, .booking-tile, .tidycal-tile', function(e) {
             e.stopPropagation();
             var url = $(this).attr('data-url') || $(this).find('a.tile-link').attr('href');
-            if (url && !url.startsWith('javascript:')) {
-                if (url.startsWith('mailto:')) {
+            if (isSafeUrl(url)) {
+                if (url.trim().toLowerCase().startsWith('mailto:')) {
                     window.location.href = url;
                 } else {
                     window.open(url, '_blank', 'noopener,noreferrer');

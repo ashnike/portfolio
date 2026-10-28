@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://themes.googleusercontent.com; img-src 'self' data: blob: https:; connect-src 'self'; object-src 'none'; base-uri 'self';">
     <title>PinakaOps // Cloud & DevOps Engineer Terminal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css" integrity="sha384-Yl1AI1JRJ9dk4E9nDljAV4ql0D1wF6IvB6bD6UQYFatTk3yPSBSdnjcRqzwA02No" crossorigin="anonymous" />
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="theme-catppuccin">
@@ -32,9 +34,9 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/autocomplete_menu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js" integrity="sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js" integrity="sha384-uyCXA6IEy6YCQLknWvjHcTZ1XGI6QbQXnusxNmnEKFpHXGIx7Hp6p1QJaZjGlBf2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/autocomplete_menu.js" integrity="sha384-VR/n6NOT9pX1M+3XcbviyMIVr0Yr4oAE44Qiewocoov7nEs8b2rBQOSH8GXPqbMO" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>

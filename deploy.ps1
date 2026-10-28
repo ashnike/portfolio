@@ -16,16 +16,18 @@ python sync_feeds.py
 Write-Host "2. Syncing static portfolio assets to s3://$BucketName..." -ForegroundColor Cyan
 aws s3 sync . "s3://$BucketName" `
     --delete `
-    --exclude ".git/*" `
+    --exclude ".git*" `
     --exclude ".github/*" `
+    --exclude ".agents/*" `
     --exclude "terraform/*" `
     --exclude ".kilo/*" `
     --exclude "*.py" `
+    --exclude "*.ps1" `
+    --exclude "*.code-workspace" `
     --exclude "__pycache__/*" `
     --exclude "README.md" `
     --exclude "LICENSE" `
     --exclude "stdout*" `
-    --exclude "deploy.ps1" `
     --cache-control "public, max-age=3600" `
     --region "$Region"
 
@@ -46,4 +48,3 @@ if ($DistributionId) {
 }
 
 Write-Host "Deployment complete!" -ForegroundColor Green
-

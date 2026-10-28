@@ -2,8 +2,7 @@
 /* ============= WINDOWS 8 START MENU MODE ============== */
 /* ====================================================== */
 
-/* Windows 8 Typography */
-@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap');
+/* Windows 8 Typography (Segoe UI is a native Windows system font with system fallbacks) */
 
 /* Hide boot screen, logon splash and password screen so Start Menu is immediately visible */
 .boot-screen,

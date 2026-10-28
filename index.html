@@ -7,6 +7,8 @@
         <meta name="HandheldFriendly" content="true">
         <meta name="MobileOptimized" content="320">
         <meta http-equiv="cleartype" content="on">
+        <meta name="referrer" content="strict-origin-when-cross-origin">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://code.jquery.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://code.ionicframework.com https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com https://themes.googleusercontent.com https://code.ionicframework.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.github.com https://devopstryhard.com https://www.credly.com https://www.youtube.com; media-src 'self'; object-src 'none'; base-uri 'self';">
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="WIndows Web 8.0 | Ashnil Naik" />
@@ -20,14 +22,14 @@
         <link rel="apple-touch-icon" sizes="72x72" href="img/logo.png" />
         <link rel="apple-touch-icon" sizes="114x114" href="img/logo.png" />
         <link rel="apple-touch-icon" sizes="144x144" href="img/logo.png" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" type="text/css" rel="stylesheet" lang="en">
-        <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" type="text/css" rel="stylesheet" lang="en">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" type="text/css" rel="stylesheet" lang="en" integrity="sha384-gFTAvnQMdZ1wfeb9vay1SlC/c+jfgXz8qMUgAGRrTso3Q6f6J6qvcUOdYFuEP9cE" crossorigin="anonymous">
+        <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" type="text/css" rel="stylesheet" lang="en" integrity="sha384-4r9SMzlCiUSd92w9v1wROFY7DlBc5sDYaEBhcCJR7Pm2nuzIIGKVRtYWlf6w+GG4" crossorigin="anonymous">
         <link href="css/main.min.css" type="text/css" rel="stylesheet" lang="en">
         <link href="css/enhancements.css" type="text/css" rel="stylesheet">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="js/jquery-ui.min.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js" integrity="sha384-oVpH0DXO9nadZxTmPSQo3YwWqfN/Up9aRDHCxLrw8A2LjkFNcM/XILw4KGMaL95z" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js" type="text/javascript" integrity="sha384-5DyzDgtTHw1bbnR1u2aQPxi5+e1KVPsygV5Pioo5W+5ua3sN5AHF05kzM0QfXXqm" crossorigin="anonymous"></script>
         <script src="js/script.js" type="text/javascript"></script>
         <script src="js/feeds.js" type="text/javascript"></script>
     </head>
@@ -170,8 +172,8 @@
                         </li>
 
                         <!-- Book a Consultation / TidyCal (2x1 Wide Priority Freelance Tile) -->
-                        <li class="live-feed-tile booking-tile tile-wide open-booking ui-sortable-handle" title="Schedule a Meeting on TidyCal">
-                            <a href="javascript:void(0)" class="tile-link modern-tile-content">
+                        <li class="live-feed-tile booking-tile tidycal-tile tile-wide ui-sortable-handle" data-url="https://tidycal.com/ashnilnaik777" title="Schedule a Meeting on TidyCal">
+                            <a href="https://tidycal.com/ashnilnaik777" target="_blank" rel="noopener noreferrer" class="tile-link modern-tile-content">
                                 <div class="tile-icon-box">
                                     <img src="img/tidycal.svg" alt="TidyCal" class="tile-svg-logo">
                                 </div>
@@ -559,17 +561,17 @@
                         </li>
                         <!-- Python -->
                         <li class="tech-tile darkTeal ui-sortable-handle" style="background: #306998;">
-                            <div class="tech-icon"><i class="ionicons ion-social-python" style="color: #ffd43b;"></i></div>
+                            <div class="tech-icon"><img src="img/python.svg" alt="Python"></div>
                             <span class="text">Python Automation</span>
                         </li>
                         <!-- GitOps -->
                         <li class="tech-tile magenta ui-sortable-handle" style="background: #d81b60;">
-                            <div class="tech-icon"><i class="ionicons ion-merge" style="color: #fff;"></i></div>
+                            <div class="tech-icon"><img src="img/argocd.svg" alt="ArgoCD"></div>
                             <span class="text">GitOps &bull; ArgoCD</span>
                         </li>
                         <!-- Networking -->
                         <li class="tech-tile teal ui-sortable-handle" style="background: #00796b;">
-                            <div class="tech-icon"><i class="ionicons ion-network" style="color: #fff;"></i></div>
+                            <div class="tech-icon"><img src="img/nginx.svg" alt="NGINX"></div>
                             <span class="text">Nginx &bull; DNS</span>
                         </li>
                     </ul>
@@ -934,7 +936,7 @@
 
                     <!-- 12. Set Up an App Dev Environment on Google Cloud -->
                     <div class="credly-card">
-                        <img src="https://images.credly.com/images/4523fa53-ce20-4180-8774-8d4e5657fe05/image.png" alt="App Dev" class="credly-card-img">
+                        <img src="https://images.credly.com/images/42326d44-14ff-4eda-b9c5-7d8f12919253/image.png" alt="App Dev" class="credly-card-img">
                         <div class="credly-card-info">
                             <span class="credly-card-title">App Dev Environment on GCP</span>
                             <span class="credly-card-issuer"><i class="ionicons ion-checkmark-circled" style="color: #00ff88;"></i> Google Cloud Skill Badge</span>

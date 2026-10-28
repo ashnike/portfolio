@@ -48,11 +48,14 @@ jobs:
         run: |
           aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} \
             --delete \
-            --exclude ".git/*" \
+            --exclude ".git*" \
             --exclude ".github/*" \
+            --exclude ".agents/*" \
             --exclude "terraform/*" \
             --exclude ".kilo/*" \
             --exclude "*.py" \
+            --exclude "*.ps1" \
+            --exclude "*.code-workspace" \
             --exclude "__pycache__/*" \
             --exclude "README.md" \
             --exclude "LICENSE" \

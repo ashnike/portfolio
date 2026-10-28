@@ -5,3 +5,6 @@ __pycache__/
 *.tfstate.*
 .terraform.lock.hcl
 *.png
+.agent/
+.agents/
+
