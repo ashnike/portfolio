@@ -4,8 +4,8 @@ on:
   push:
     branches: [ main ]
   schedule:
-    # Auto-sync YouTube & Blog feeds every 6 hours
-    - cron: '0 */6 * * *'
+    # Auto-sync YouTube & Blog feeds every 24 hours
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 permissions:
@@ -62,12 +62,14 @@ jobs:
             --exclude "stdout*" \
             --cache-control "public, max-age=3600"
 
-          # Ensure index.html and json feeds have short/no cache for instant updates
+          # Ensure index.html and JSON feeds have short cache for updates
           aws s3 cp index.html s3://${{ secrets.S3_BUCKET_NAME }}/index.html \
-            --cache-control "public, max-age=0, must-revalidate" --content-type "text/html"
+            --cache-control "public, max-age=0, must-revalidate" \
+            --content-type "text/html"
 
           aws s3 sync data/ s3://${{ secrets.S3_BUCKET_NAME }}/data/ \
-            --cache-control "public, max-age=60, must-revalidate" --content-type "application/json"
+            --cache-control "public, max-age=60, must-revalidate" \
+            --content-type "application/json"
 
       - name: Invalidate CloudFront Distribution Cache
         if: env.DISTRIBUTION_ID != ''
@@ -75,6 +77,5 @@ jobs:
           DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
         run: |
           aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --distribution-id "$DISTRIBUTION_ID" \
             --paths "/*"
-
